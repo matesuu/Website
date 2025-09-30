@@ -1,24 +1,270 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/laughing.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mateo Alado | Software Developer</title>
-  <meta name="description"
-    content="Computer science student and developer skilled in Python, Java, and creative tools. Passionate about AI, embedded systems, and collaborative development." />
-  <link rel="preload" href="/fonts/inter-v19-latin-100.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <!-- <link rel="preload" href="/fonts/inter-v19-latin-600.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/inter-v19-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" href="/fonts/inter-v19-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous"> -->
-  <link rel="preload" href="/fonts/hurricane-v8-latin-regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-  <script type="module" crossorigin src="/assets/index-CW25r-ys.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DPcZEqAm.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/8d5439d9ac.js" crossorigin="anonymous"></script>
+
+    
 </head>
 
-<body style="background-color: #2B2036;">
-  <div id="root"></div>
-</body>
+<!----------------Header Section------------------->
 
+
+<body>
+     
+    <div id="header">
+        <nav id="navbar">
+            <h1 class="logo"><a href="#header"><span>M</span>ateo</a></h1>
+            <!----<img src="images/logo.png" alt="Logo" width="243" height="85">------>
+            <ul id="sidemenu">
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio ">Projects</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+                <i class="fas fa-solid fa-xmark" onclick="closemenu()"></i>
+            </ul>
+            <i class="fas fa-solid fa-bars" onclick="openmenu()"></i>
+        </nav>
+
+        <div class="container">
+            
+
+           
+            <div class="header-text">
+                <p>Open Source Software Engineer</p>
+                <h1>Hi, I'm <span>Mateo</span>. I Study<br>Computer Science at California State University, East Bay</h1>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+<!----------------What I do Section------------------->
+<div id="services">
+    <div class="container">
+        <div class="sub-title">Skills</div>
+        <div class="services-list">
+            <div>
+                <i class="fa-solid fa-check"></i>
+                <h2>Software Development/Testing</h2>
+                <p>At Neuroleap Corp, I used Javascript and Cypress to periodically stress test component functionalities across all company websites. This helped me learn to develop autonomous scripts.</p>
+                
+            </div>
+            <div>
+                <i class="fa-solid fa-database"></i>
+                <h2>Backend Data Management</h2>
+                <p>Experience using flask and python to develop data management system for Project Safe Water.</p>
+                
+            </div>
+            <div>
+                <i class="fa-solid fa-code"></i>
+                <h2>Web Design</h2>
+                <p>I have experience designing, developing, and implementing websites using HTML, CSS, and Javascript. I used these skills to build this website</p>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----------------Projects Section------------------->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">My Work</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="images/work-1.png">
+                <div class="layer">
+                    <h3><b>Project Safe Water</b></h3>
+                    <p>Project Safe Water effectively tracks the location of safe drinking sources in a small vicinity of the users location and provides useful information about the quality of water.</p>
+                    <a href="https://devpost.com/software/project-safe-water"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-2.png">
+                <div class="layer">
+                    <h3><b>Personal Portfolio Website</b></h3>
+                    <p>Used HTML, CSS, and Javascript to create this personal portfolio website. Here I showcase my professional projects, skills, and achievements.</p>
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="work">
+                <img src="images/work-3.png">
+                <div class="layer">
+                    <h3><b>E-Learning Platform</b></h3>
+                    <p>an AI-powered web app that identifies user knowledge gaps from quiz results and generates
+                        personalized learning paths with book, course, and exercise recommendations.</p>
+                    <a href="https://devpost.com/software/elearning-dv7s83"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            <div class="">
+                <div class="layer">
+                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        <a href="#" class="btn">See More</a>
+    </div>
+</div>
+
+
+<!----------------About Me Section------------------->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/Headshot.png" alt="Justin's Headshot" width="450" height="368">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>&#128640; Hi there! My name is Mateo Alado.<br><br>
+
+                    As a highly driven fourth-year studying Computer Science at Cal State East Bay, I am deeply passionate about the rapidly evolving world of Artificial Intelligence and Cloud Computing.<br><br>
+                    
+                    My education has provided me with a solid foundation of Computer Science that equips me with the knowledge necessary to begin my journey to achieving this goal. My completed coursework includes: Advanced Programming, Data Structures, Intro to Logic Design and Intro to Embedded Systems. Additionally, I am currently taking Advanced Object Oriented Programming and Data structures.<br><br>
+                    
+                    I aspire to break into AI Programming and Cloud Computing as a software engineer and use my skills to develop innovative solutions to real world problems. I am driven by learning and curiosity, and I possess a growth mindset that allows me to overcome obstacles. I am eager to join a company that will allow me to learn from experienced mentors and contribute to impactful projects and solutions.
+                </p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>Programming</span><br>C/C++, Python, HTML, CSS, Java</li>
+                        <li><span>Software</span><br>Git, Linux, Cypress</li>
+                    </ul>
+                </div>
+
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>Apr 2023 - Sep 2023</span><br>Software QA/Testing Engineering Internship at Neuroleap corp.</li>
+                        <li><span>Sep 2021 - May 2022</span><br>Math and Science Mentoring Program Tutor</li>
+                        
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>June 2026</span><br>B.S. Computer Science and Engineering at Santa Clara University</li>
+                        
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+</div>
+
+<!----------------Contact Me Section------------------->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me!</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>justinodo213@gmail.com</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/in/justin-odo/"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/JodoSCU"><i class="fa-brands fa-square-github"></i></a>
+                </div>
+                <!---<a href="images/JustinOdo_12_14_2023.pdf" download class="btn btn2">Download Resume/CV</a>----->
+
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="Email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                    <a href="images/JustinOdo_11_20_24.pdf" download class="btn btn2">Download Resume/CV</a>
+                </form>
+                <span id="msg"></span>
+             </div>
+        </div>
+    </div>
+    
+</div>
+
+<script>
+    var tablinks = document.getElementsByClassName('tab-links');
+    var tabcontents = document.getElementsByClassName('tab-contents');
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+    function openmenu(){
+        document.getElementById('sidemenu').style.right = '0';
+    }
+
+    function closemenu(){
+        document.getElementById('sidemenu').style.right = '-200px';
+    }
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbz5RKd_CLqSt1nbXaWnpUUeLA9moCkfpuENn-JxZBxI3nSgqSIopk9dYlE-0QuuOjya/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById('msg')
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent. I will get back to you soon!"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            }, 5000)
+            form.reset();
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("scroll", function () {
+            var navbar = document.getElementById("navbar");
+            if (window.scrollY > 250) {
+                navbar.style.backgroundColor = "hsl(0, 0%, 11%)"; 
+                navbar.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.3)"; 
+            } else {
+                navbar.style.backgroundColor = "rgba(0, 0, 0, 0)"; 
+                navbar.style.boxShadow = "none"; 
+            }
+        });
+    });
+
+</script>
+
+
+<script type="text/javascript">
+    var headerBg = document.getElementById('header');
+    window.addEventListener('scroll', function(){
+        headerBg.style.top = -window.pageYOffset + 'px';
+        headerBg.style.backgroundPositionY = +window.pageYOffset/3 + 'px';
+    });
+</script>
+
+<script type="text/javascript">
+    window.addEventListener('scroll', function(){
+        var header = document.querySelector('header');
+        header.classList.toggle('sticky', window.scrollY > 0);
+    });
+</script>
+
+</body>
 </html>
