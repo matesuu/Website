@@ -50,7 +50,7 @@ h1.logo a{
 }
 
 .logo::first-letter {
-    color: #922cfe;
+    color: #24e224;;
 }
 
 #navbar {
@@ -89,7 +89,7 @@ nav ul li a::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #922cfe;
+    background: #24e224;;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -114,7 +114,7 @@ nav ul li a:hover::after{
 }
 
 .header-text h1 span{
-    color: #922cfe;
+    color: #24e224;;
 }
 
 /* ---------------- About me ----------------- */
@@ -167,7 +167,7 @@ nav ul li a:hover::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #922cfe;
+    background: #24e224;;
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -184,7 +184,7 @@ nav ul li a:hover::after{
 }
 
 .tab-contents ul li span{
-    color: #9150d6;
+    color: #24e224;;
     font-size: 14px;
 }
 
@@ -231,7 +231,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div:hover{
-    background: #9150d6;
+    background: #24e224;;
     transform: translateY(-10px);
 }
 
@@ -270,7 +270,7 @@ nav ul li a:hover::after{
 .layer{
     width: 100%;
     height: 0;
-    background: linear-gradient(rgba(0,0,0,0.6), #8714f9);
+    background: linear-gradient(rgba(0,0,0,0.6), #24e224);
     border-radius: 10px;
     position:absolute;
     left: 0;
@@ -318,7 +318,7 @@ nav ul li a:hover::after{
     display: block;
     margin: 50px auto;
     width: fit-content;
-    border: 1px solid #9150d6;
+    border: 1px solid #24e224;
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
@@ -327,7 +327,7 @@ nav ul li a:hover::after{
 }
 
 .btn:hover{
-    background: #9150d6;
+    background: #24e224;;
 }
 
 
@@ -341,7 +341,7 @@ nav ul li a:hover::after{
 }
 
 .contact-left p i{
-    color: #9150d6;
+    color: #24e224;;
     margin-right: 15px;
     font-size: 25px;
 }
@@ -381,13 +381,13 @@ form input, form textarea{
 }
 
 .social-icons a:hover{
-    color: #9150d6;
+    color: #24e224;;
     transform: translateY(-5px);
 }
 
 .btn.btn2{
     display: inline-block;
-    background: #9150d6;
+    background: #24e224;;
 }
 
 form .btn2{
@@ -423,7 +423,7 @@ nav .fas{
     }
 
     nav ul{
-        background: #9150d6;
+        background: #24e224;;
         position: fixed;
         top: 0;
         right: -200px;
