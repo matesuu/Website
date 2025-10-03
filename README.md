@@ -1,3 +1,3 @@
 # Website Link
 #
-# http://matesuu.github.io/Website/
+# http://matesuu.github.io/website/
