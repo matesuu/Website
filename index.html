@@ -19,7 +19,6 @@
         });
     })();
     </script>
-    <script>src="script.js"</script>
     
 </head>
 
@@ -236,6 +235,30 @@
     }
 </script>
 
+<script>
+    const form = document.forms['submit-to-email']
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+
+      const serviceID = "service_68oovjk";
+      const templateID = "template_w9qv3ey";
+      const publicKey = "8X41q2CI0nfqJCVCk";
+
+      emailjs.sendForm(serviceID, templateID, this, publicKey)
+        
+        .then(() => {
+            alert('Your Email Was Sent! I will get to you shortly.');
+            form.reset();
+
+        }, (error) => {
+
+            alert('Failed to send email: ' + error.message);
+        });
+      
+    });
+
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
