@@ -8,17 +8,6 @@
     <title>Mateo Alado's Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/8d5439d9ac.js" crossorigin="anonymous"></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-    <script type="text/javascript">
-    (function(){
-        emailjs.init({
-            publicKey: "8X41q2CI0nfqJCVCk",
-        });
-    })();
-    </script>
-    
 </head>
 
 <!----------------Header Section------------------->
@@ -235,26 +224,6 @@
 </script>
 
 <script>
-   const form = document.forms['submit-to-email'];
-
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-
-        const serviceID = "service_68oovjk";
-        const templateID = "template_w9qv3ey";
-        const publicKey = "8X41q2CI0nfqJCVCk";
-
-        emailjs.sendForm(serviceID, templateID, form, publicKey)
-            .then(() => {
-                alert('Your Email Was Sent! I will get to you shortly.');
-                form.reset();
-            }, (error) => {
-                alert('Failed to send email: ' + error.message);
-            });
-    });
-</script>
-
-<script>
     document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", function () {
             var navbar = document.getElementById("navbar");
@@ -285,6 +254,33 @@
         header.classList.toggle('sticky', window.scrollY > 0);
     });
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    emailjs.init("8X41q2CI0nfqJCVCk"); // Only needed once
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      emailjs
+        .sendForm("service_68oovjk", "template_w9qv3ey", form)
+        .then(
+          function () {
+            alert("Email sent successfully!");
+            form.reset();
+          },
+          function (error) {
+            console.error("EmailJS Error:", error);
+            alert("Failed to send email: " + (error.text || error.message || "Unknown error"));
+          }
+        );
+    });
+  });
+</script>
+
 
 </body>
 </html>
