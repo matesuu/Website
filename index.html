@@ -8,6 +8,18 @@
     <title>Mateo Alado's Website</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/8d5439d9ac.js" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "8X41q2CI0nfqJCVCk",
+      });
+   })();
+</script>
+
 </head>
 
 <!----------------Header Section------------------->
@@ -186,10 +198,10 @@
             </div>
             <div class="contact-right">
                 <form name="submit-to-email">
-                    <input type="text" name="Name" placeholder="Your Name" required>
-                    <input type="email" name="Email" placeholder="Your Email" required>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
+                    <input type="text" name="Name" id="name" placeholder="Your Name" required>
+                    <input type="email" name="Email" id="email" placeholder="Your Email" required>
+                    <textarea name="Message" id="message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2" onclick="sendMail()">Submit</button>
                     <a href="images/Mateo Alado SWE Resume.pdf" download class="btn btn2">Download Resume/CV</a>
                 </form>
                 <span id="msg"></span>
@@ -254,33 +266,6 @@
         header.classList.toggle('sticky', window.scrollY > 0);
     });
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form");
-
-    emailjs.init("8X41q2CI0nfqJCVCk"); // Only needed once
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      emailjs
-        .sendForm("service_68oovjk", "template_w9qv3ey", form)
-        .then(
-          function () {
-            alert("Email sent successfully!");
-            form.reset();
-          },
-          function (error) {
-            console.error("EmailJS Error:", error);
-            alert("Failed to send email: " + (error.text || error.message || "Unknown error"));
-          }
-        );
-    });
-  });
-</script>
-
 
 </body>
 </html>
