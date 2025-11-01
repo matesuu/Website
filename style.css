@@ -50,7 +50,7 @@ h1.logo a{
 }
 
 .logo::first-letter {
-    color: #24e224;;
+    color: #87CEEB;;
 }
 
 #navbar {
@@ -89,7 +89,7 @@ nav ul li a::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #24e224;;
+    background: #87CEEB;;
     position: absolute;
     left: 0;
     bottom: -6px;
@@ -114,7 +114,7 @@ nav ul li a:hover::after{
 }
 
 .header-text h1 span{
-    color: #24e224;;
+    color: #87CEEB;;
 }
 
 /* ---------------- About me ----------------- */
@@ -167,7 +167,7 @@ nav ul li a:hover::after{
     content: '';
     width: 0;
     height: 3px;
-    background: #24e224;;
+    background: #87CEEB;;
     position: absolute;
     left: 0;
     bottom: -8px;
@@ -184,7 +184,7 @@ nav ul li a:hover::after{
 }
 
 .tab-contents ul li span{
-    color: #24e224;;
+    color: #87CEEB;;
     font-size: 14px;
 }
 
@@ -231,7 +231,7 @@ nav ul li a:hover::after{
 }
 
 .services-list div:hover{
-    background: #24e224;;
+    background: #87CEEB;;
     transform: translateY(-10px);
 }
 
@@ -295,7 +295,7 @@ nav ul li a:hover::after{
 
 .layer a{
     margin-top: 20px;
-    color: #bf91f0;
+    color: #87CEEB;
     text-decoration: none;
     font-size: 18 px;
     line-height: 60px;
@@ -318,7 +318,7 @@ nav ul li a:hover::after{
     display: block;
     margin: 50px auto;
     width: fit-content;
-    border: 1px solid #24e224;
+    border: 1px solid #87CEEB;
     padding: 14px 50px;
     border-radius: 6px;
     text-decoration: none;
@@ -341,7 +341,7 @@ nav ul li a:hover::after{
 }
 
 .contact-left p i{
-    color: #24e224;;
+    color: #87CEEB;;
     margin-right: 15px;
     font-size: 25px;
 }
@@ -381,13 +381,13 @@ form input, form textarea{
 }
 
 .social-icons a:hover{
-    color: #24e224;;
+    color: #87CEEB;;
     transform: translateY(-5px);
 }
 
 .btn.btn2{
     display: inline-block;
-    background: #24e224;;
+    background: #87CEEB;;
 }
 
 form .btn2{
@@ -423,7 +423,7 @@ nav .fas{
     }
 
     nav ul{
-        background: #24e224;;
+        background: #87CEEB;;
         position: fixed;
         top: 0;
         right: -200px;
@@ -476,7 +476,7 @@ nav .fas{
 }
 
 #msg{
-    color: #61b752;
+    color: #87CEEB;
     margin-top: -10px;
     display: block;
 }
