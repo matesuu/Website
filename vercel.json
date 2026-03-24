@@ -2,6 +2,5 @@
   "buildCommand": "vite build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
-  "framework": "vite",
-  "rootDirectory": "react-app"
+  "framework": "vite"
 }
