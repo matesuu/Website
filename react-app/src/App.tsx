@@ -557,7 +557,7 @@ function ContactPage() {
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d472244.646295437!2d-121.67409044507838!3d37.35972679412347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b!2sSan%20Jose%2C%20CA!5e1!3m2!1sen!2sus!4v1748325762049!5m2!1sen!2sus"
             width="400"
-            height="300"
+            height="600"
             loading="lazy"
             title="Map"
           />
