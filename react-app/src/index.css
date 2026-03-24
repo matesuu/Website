@@ -9,27 +9,57 @@
 }
 
 :root {
-  /* gradients */
-  --bg-gradient-onyx: linear-gradient(to bottom right, hsl(240, 1%, 25%) 3%, hsl(0, 0%, 19%) 97%);
-  --bg-gradient-jet: linear-gradient(to bottom right, hsla(240, 1%, 18%, 0.251) 0%, hsla(240, 2%, 11%, 0) 100%), hsl(240, 2%, 13%);
-  --bg-gradient-yellow-1: linear-gradient(to bottom right, hsl(45, 100%, 71%) 0%, hsla(36, 100%, 69%, 0) 50%);
-  --bg-gradient-yellow-2: linear-gradient(135deg, hsla(45, 100%, 71%, 0.251) 0%, hsla(35, 100%, 68%, 0) 59.86%), hsl(240, 2%, 13%);
-  --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
-  --text-gradient-yellow: linear-gradient(to right, hsl(45, 100%, 72%), hsl(35, 100%, 68%));
+  /* ── Liquid-glass palette ── */
+  --glass-bg:         rgba(255, 255, 255, 0.55);
+  --glass-bg-hover:   rgba(255, 255, 255, 0.72);
+  --glass-border:     rgba(195, 218, 240, 0.70);
+  --glass-blur:       blur(22px) saturate(200%);
+  --glass-shadow:     rgba(100, 168, 220, 0.18);
 
-  /* solid */
-  --jet: hsl(0, 0%, 22%);
-  --onyx: hsl(240, 1%, 17%);
-  --eerie-black-1: hsl(240, 2%, 13%);
-  --eerie-black-2: hsl(240, 2%, 12%);
-  --smoky-black: hsl(0, 0%, 7%);
-  --white-1: hsl(0, 0%, 100%);
-  --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
-  --light-gray: hsl(0, 0%, 84%);
-  --light-gray-70: hsla(0, 0%, 84%, 0.7);
-  --bittersweet-shimmer: hsl(0, 43%, 51%);
+  /* Silver surface gradient (used for cards / sidebar) */
+  --bg-gradient-onyx: linear-gradient(135deg,
+                        rgba(225, 234, 243, 0.82) 0%,
+                        rgba(200, 216, 232, 0.65) 50%,
+                        rgba(215, 228, 244, 0.78) 100%);
+  --bg-gradient-jet:  linear-gradient(135deg,
+                        rgba(235, 244, 252, 0.75) 0%,
+                        rgba(210, 228, 245, 0.60) 100%);
+  --bg-gradient-blue-1: linear-gradient(to bottom right,
+                        rgba(90, 172, 237, 0.30) 0%,
+                        rgba(90, 172, 237, 0) 50%);
+  --bg-gradient-blue-2: linear-gradient(135deg,
+                        rgba(90, 172, 237, 0.18) 0%,
+                        rgba(90, 172, 237, 0) 59.86%),
+                        rgba(215, 232, 248, 0.75);
+  --border-gradient-onyx: linear-gradient(to bottom right,
+                        rgba(180, 210, 235, 0.80) 0%,
+                        rgba(180, 210, 235, 0) 50%);
+  --text-gradient-blue: linear-gradient(to right,
+                        hsl(205, 80%, 58%), hsl(215, 75%, 52%));
+
+  /* Accents */
+  --accent:               #5aaced;
+  --accent-light:         #a8d8f8;
+  --accent-glow:          rgba(90, 172, 237, 0.35);
+
+  /* Text — all light blue tones */
+  --text-primary:         #3a7ab5;
+  --text-secondary:       #6aadd8;
+  --text-dark:            #2c5f8a;
+
+  /* Legacy token aliases kept so component JSX still compiles */
+  --jet:                  rgba(160, 200, 230, 0.55);
+  --onyx:                 rgba(220, 236, 250, 0.80);
+  --eerie-black-1:        rgba(235, 245, 255, 0.75);
+  --eerie-black-2:        rgba(240, 248, 255, 0.80);
+  --smoky-black:          #eef4fb;
+  --white-1:              #2c5f8a;
+  --white-2:              #3a7ab5;
+  --orange-yellow-crayola: #5aaced;   /* remapped → accent blue */
+  --vegas-gold:           #6aadd8;
+  --light-gray:           #5a8fc0;
+  --light-gray-70:        rgba(90, 143, 192, 0.70);
+  --bittersweet-shimmer:  #7bbcdf;
 
   /* typography */
   --ff-poppins: 'Poppins', sans-serif;
@@ -46,12 +76,12 @@
   --fw-500: 500;
   --fw-600: 600;
 
-  /* shadow */
-  --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
-  --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.25);
-  --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.25);
-  --shadow-4: 0 25px 50px hsla(0, 0%, 0%, 0.15);
-  --shadow-5: 0 24px 80px hsla(0, 0%, 0%, 0.25);
+  /* shadows — soft blue-tinted */
+  --shadow-1: -4px 8px 24px rgba(100, 168, 220, 0.18);
+  --shadow-2: 0 16px 30px  rgba(100, 168, 220, 0.15);
+  --shadow-3: 0 16px 40px  rgba(100, 168, 220, 0.15);
+  --shadow-4: 0 25px 50px  rgba(100, 168, 220, 0.12);
+  --shadow-5: 0 24px 80px  rgba(100, 168, 220, 0.18);
 
   /* transition */
   --transition-1: 0.25s ease;
@@ -76,13 +106,54 @@ input, textarea {
 }
 
 ::selection {
-  background: var(--orange-yellow-crayola);
-  color: var(--smoky-black);
+  background: var(--accent);
+  color: #fff;
 }
 
-:focus { outline-color: var(--orange-yellow-crayola); }
+:focus { outline-color: var(--accent); }
 
 html { font-family: var(--ff-poppins); }
-body { background: var(--smoky-black); }
+
+/* ── Soft-white page background with floating blue blobs ── */
+body {
+  background: linear-gradient(145deg, #eef4fb 0%, #f5f8fd 40%, #e8f1f9 70%, #f2f7fc 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  position: relative;
+}
+
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(130px);
+  opacity: 0.20;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::before {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, #90caee, transparent 70%);
+  top: -140px; right: -110px;
+  animation: blobDrift1 24s ease-in-out infinite;
+}
+
+body::after {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, #b8ddf5, transparent 70%);
+  bottom: -100px; left: -100px;
+  animation: blobDrift2 30s ease-in-out infinite;
+}
+
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(-65px, 50px); }
+}
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(50px, -65px); }
+}
 
 strong { font-weight: var(--fw-500); }

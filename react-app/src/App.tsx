@@ -49,7 +49,7 @@ const education = [
     degree: 'B.S. Computer Science',
     school: 'California State University, East Bay',
     gpa: '',
-    dates: 'Expected December 2026',
+    dates: 'December 2026',
     coursework:
       'Data Structures and Algorithms, Object Oriented Design, Operating Systems, Computer Networking, Machine Learning.',
   },
