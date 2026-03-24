@@ -68,26 +68,26 @@ const experienceList = [
     company: 'California State University, East Bay',
     dates: 'Jan 2026 — Present',
     bullets: [
-      '• Conducting ML research on AI-assisted systems, working with deep learning models and computer vision pipelines.',
-      '• Collaborating with faculty on research papers and experimental design using Python, PyTorch, and OpenCV.',
+      '• Conducting ML research on AI-assisted systems using RAG, working to optimize long-context performance (128-256k tokens) on numerous models including LLaMA 3 and Gemma 2 Pro',
+      '• Collaborating with faculty on research papers and experimental design using Python, Android, and PolyG',
     ],
   },
   {
     role: 'Teaching Assistant',
     company: 'California State University, East Bay',
-    dates: 'September 2025 — Present',
+    dates: 'January 2025 — December 2025',
     bullets: [
-      '• Leading lab sessions for students in Data Structures and OOP courses, emphasizing ADTs and algorithmic design.',
-      '• Mentoring students in debugging, profiling, and code optimization techniques.',
+      '• Organized instructional sessions for 50+ students in STEM courses including CS, Math, and Physics.',
+      '• Developed study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
     ],
   },
   {
     role: 'Lead Program Mentor',
-    company: 'MESA CSU East Bay',
+    company: 'CSU East Bay MESA',
     dates: 'January 2025 — December 2025',
     bullets: [
-      '• Leading mentorship sessions for 20+ students in STEM courses including CS, Math, and Physics.',
-      '• Developing study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
+      '• Engaged in mentorship sessions for 50+ students in STEM courses including CS, Math, and Physics.',
+      '• Developed materials for facilitating workshops on professional development and networking.',
     ],
   },
   {
@@ -95,18 +95,18 @@ const experienceList = [
     company: 'Self-Employed',
     dates: 'August 2024 — Jan 2026',
     bullets: [
-      '• Building full-stack web applications and automation tools for clients using React, Node.js, and Python.',
-      '• Delivering production-ready code with clean architecture, testing, and CI/CD deployment.',
+      '• Built and contributed to full-stack web applications and automation tools for clients using React, Node.js, and Python.',
+      '• Delivered production-ready code with clean architecture, testing, and CI/CD deployment.',
     ],
   },
 ];
 
 const skills = [
   { label: 'Languages', text: 'Python, C/C++, Java, TypeScript, SQL' },
-  { label: 'ML & AI', text: 'PyTorch, RAG, GraphRAG, Multithreading' },
-  { label: 'Backend', text: 'Node.js, Flask, Django, REST APIs, Docker, AWS, MongoDB' },
-  { label: 'Frontend', text: 'React, React Native, Tailwind CSS' },
-  { label: 'Tools', text: 'Git, GitHub, GitLab, Docker' },
+  { label: 'ML & AI', text: 'PyTorch, RAG/GraphRAG, Long-Context Optimization (128k-256k)' },
+  { label: 'Backend', text: 'Node.js, Flask, REST APIs, Distributed Systems, Cloudflare Workers' },
+  { label: 'Database', text: 'PostgreSQL, MongoDB, Cloudflare D1' },
+  { label: 'Tools', text: 'Docker, AWS, Git'},
 ];
 
 const projectCategories = ['all', 'ai / ml', 'software', 'tools'] as const;
@@ -114,49 +114,56 @@ type Category = (typeof projectCategories)[number];
 
 const projects = [
   {
-    image: '/images/secure.jpeg',
-    title: 'MYLogin',
+    image: '/images/perplx.png',
+    title: 'perplx - The Perplexity Coding Agent',
+    category: 'ai / ml' as Category,
+    tech: 'TypeScript, Web Workers, Cloudflare D1, Perplexity Agent API',
+    link: 'perplx.net',
+  },
+  {
+    image: '/images/mylogin.png',
+    title: 'Secure Authentication Encryption Serivce',
     category: 'software' as Category,
-    tech: 'Python, Encryption, CLI',
+    tech: 'Python, Fernet, Symmetric Encryption, Crytography, CLI',
     link: 'https://github.com/matesuu/MYLogin',
   },
   {
-    image: '/images/matrix.png',
-    title: 'MANA',
-    category: 'software' as Category,
-    tech: 'C/C++, Linear Algebra, Numerical Methods',
-    link: 'https://github.com/matesuu/MANA',
-  },
-  {
-    image: '/images/git.png',
-    title: 'autogit',
+    image: '/images/autogit.png',
+    title: 'Git Automation Workflow Tool',
     category: 'tools' as Category,
-    tech: 'C, Bash, Git Automation',
+    tech: 'C, Bash, Git Automation, Process Control, Embedded Systems',
     link: 'https://github.com/matesuu/autogit',
   },
   {
-    image: '/images/flashcards.png',
-    title: 'CogniStudy',
+    image: '/images/CogniStudy.png',
+    title: 'Real Time Learning Application',
     category: 'software' as Category,
-    tech: 'Java, Education, Personalized Learning',
+    tech: 'Java, Socket Programming, UI Design, Software Engineering, Software Architecture',
     link: 'https://github.com/matesuu/CogniStudy',
+  },
+  {
+    image: '/images/matrix.png',
+    title: 'Math Library for Matrices',
+    category: 'software' as Category,
+    tech: 'C/C++, Linear Algebra, Numerical Methods',
+    link: 'https://github.com/matesuu/MANA',
   },
 ];
 
 const achievements = [
   {
-    image: '/images/field.jpg',
+    image: '/images/hh.jpg',
+    category: 'HackHayward 2026',
+    date: '2026',
+    title: 'Winner for Best Use of Perplexity API',
+    text: 'Awarded a recognition for innovative use of the Perplexity API in a coding agent project, demonstrating creativity and technical skill',
+  },
+  {
+    image: '/images/mesa.jpg',
     category: 'MESA CSU East Bay',
     date: '2025',
     title: 'Lead Program Mentor',
     text: 'Selected as lead mentor for the MESA program, supporting STEM students through workshops and 1-on-1 mentoring.',
-  },
-  {
-    image: '/images/4k.jpg',
-    category: 'Cal State East Bay',
-    date: '2025',
-    title: 'ML Research Position',
-    text: 'Awarded a research position in the College of Science to work on ML-powered systems and computer vision.',
   },
 ];
 
@@ -174,7 +181,7 @@ function Sidebar() {
 
         <div className="info-content">
           <h1 className="name">Mateo Alado</h1>
-          <p className="title">Software Engineer</p>
+          <p className="title">Machine Learning Engineer</p>
         </div>
 
         <button className="info-more-btn" onClick={() => setExpanded(!expanded)}>
