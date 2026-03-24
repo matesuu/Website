@@ -66,34 +66,34 @@ const experienceList = [
   {
     role: 'Machine Learning Research Intern',
     company: 'California State University, East Bay',
-    dates: 'Sep 2025 — Present',
+    dates: 'Jan 2026 — Present',
     bullets: [
       '• Conducting ML research on AI-assisted systems, working with deep learning models and computer vision pipelines.',
       '• Collaborating with faculty on research papers and experimental design using Python, PyTorch, and OpenCV.',
     ],
   },
   {
-    role: 'Lead Program Mentor',
-    company: 'MESA CSU East Bay',
-    dates: 'Jan 2025 — Present',
-    bullets: [
-      '• Leading mentorship sessions for 20+ students in STEM courses including CS, Math, and Physics.',
-      '• Developing study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
-    ],
-  },
-  {
     role: 'Teaching Assistant',
     company: 'California State University, East Bay',
-    dates: 'Sep 2025 — Present',
+    dates: 'September 2025 — Present',
     bullets: [
       '• Leading lab sessions for students in Data Structures and OOP courses, emphasizing ADTs and algorithmic design.',
       '• Mentoring students in debugging, profiling, and code optimization techniques.',
     ],
   },
   {
-    role: 'Freelance Software Engineer',
+    role: 'Lead Program Mentor',
+    company: 'MESA CSU East Bay',
+    dates: 'January 2025 — December 2025',
+    bullets: [
+      '• Leading mentorship sessions for 20+ students in STEM courses including CS, Math, and Physics.',
+      '• Developing study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
+    ],
+  },
+  {
+    role: 'Open Source Contributor',
     company: 'Self-Employed',
-    dates: 'Jan 2024 — Present',
+    dates: 'August 2024 — Jan 2026',
     bullets: [
       '• Building full-stack web applications and automation tools for clients using React, Node.js, and Python.',
       '• Delivering production-ready code with clean architecture, testing, and CI/CD deployment.',
@@ -102,7 +102,7 @@ const experienceList = [
 ];
 
 const skills = [
-  { label: 'Languages', text: 'Python, C/C++, Java, Go, TypeScript, JavaScript, SQL' },
+  { label: 'Languages', text: 'Python, C/C++, Java, TypeScript, SQL' },
   { label: 'ML & AI', text: 'PyTorch, RAG, GraphRAG, Multithreading' },
   { label: 'Backend', text: 'Node.js, Flask, Django, REST APIs, Docker, AWS, MongoDB' },
   { label: 'Frontend', text: 'React, React Native, Tailwind CSS' },
