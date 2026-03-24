@@ -35,12 +35,12 @@ const services = [
   {
     icon: faPython,
     title: 'Machine Learning Research',
-    text: 'Developing and training ML models for intelligent, real-world solutions using frameworks like PyTorch and TensorFlow.',
+    text: 'Developing methods for optimizing long-context tokenization strategies for LLMs, and designing efficient RAG/GraphRAG-based agent architectures for practical applications.',
   },
   {
     icon: faReact,
     title: 'Full-Stack AI Application Development',
-    text: 'Developing modern, scalable web applications using React, Node.js, and Next.js, with a focus on performance and clean UI/UX.',
+    text: 'Creating modern, scalable web applications using TypeScript, React, and Node.js, and Python with a focus on integrating AI technologies with web frameworks for seamless UI/UX.',
   },
 ];
 
@@ -51,7 +51,7 @@ const education = [
     gpa: '',
     dates: 'December 2026',
     coursework:
-      'Data Structures and Algorithms, Object Oriented Design, Operating Systems, Computer Networking, Machine Learning.',
+      'Advanced Data Structures and Algorithms, Computer Architecture, Operating Systems, Computer Networks, Machine Learning.',
   },
   {
     degree: 'A.S. Computer Science',
@@ -68,8 +68,8 @@ const experienceList = [
     company: 'California State University, East Bay',
     dates: 'Jan 2026 — Present',
     bullets: [
-      '• Conducting ML research on AI-assisted systems using RAG, working to optimize long-context performance (128-256k tokens) on numerous models including LLaMA 3 and Gemma 2 Pro',
-      '• Collaborating with faculty on research papers and experimental design using Python, Android, and PolyG',
+      '• Designed and optimized long-context tokenization strategies for 128k-256k token LLM inputs, addressing scalability bottlenecks in extended context windows.',
+      '• Engineered and implemented a GraphRAG-based agent architecture, reducing token usage by approximately 90% and achieving 2× lower inference latency on long-document QA benchmarks compared to baseline GPT-4o inference.',
     ],
   },
   {
@@ -77,8 +77,8 @@ const experienceList = [
     company: 'California State University, East Bay',
     dates: 'January 2025 — December 2025',
     bullets: [
-      '• Organized instructional sessions for 50+ students in STEM courses including CS, Math, and Physics.',
-      '• Developed study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
+      '• Organized instructional sessions for 50+ students in Data Structures and Algorithms courses at California State University, East Bay.',
+      '• Developed study materials and facilitating workshops on data structures resulting in a ~20% increase in overall class performance comapared to the previous semester.',
     ],
   },
   {
@@ -86,8 +86,8 @@ const experienceList = [
     company: 'CSU East Bay MESA',
     dates: 'January 2025 — December 2025',
     bullets: [
-      '• Engaged in mentorship sessions for 50+ students in STEM courses including CS, Math, and Physics.',
-      '• Developed materials for facilitating workshops on professional development and networking.',
+      '• Mentored a cohort of 4 Computer Science students, providing guidance on academic and career development in STEM fields.',
+      '• Incrased student engagement and rentention by organizing workshops, coding sessions, and 1-on-1 mentoring, resulting in a 30% increase in student participation in MESA activities.',
     ],
   },
   {
@@ -95,8 +95,8 @@ const experienceList = [
     company: 'Self-Employed',
     dates: 'August 2024 — Jan 2026',
     bullets: [
-      '• Built and contributed to full-stack web applications and automation tools for clients using React, Node.js, and Python.',
-      '• Delivered production-ready code with clean architecture, testing, and CI/CD deployment.',
+      '• Improved performance of Python and TypeScript backend systems by optimizing async I/O, request handling, and query patterns across 5 repositories.',
+      '• Optimized development workflows and code integration processes reducing overall development cycle time by ~10%.',
     ],
   },
 ];
@@ -152,7 +152,7 @@ const projects = [
 
 const achievements = [
   {
-    image: '/images/hh.jpeg',
+    image: '/images/hackhayward.jpeg',
     category: 'HackHayward 2026',
     date: '2026',
     title: 'Winner for Best Use of Perplexity API',
@@ -297,11 +297,11 @@ function AboutPage() {
         <p>
           I'm a Computer Science student at California State University – East Bay, specializing in
           Machine Learning, AI, and scalable software systems. With a strong foundation in algorithms,
-          web development, and ML frameworks, I turn bold ideas into smart, functional technology.
+          web development, and ML frameworks/concepts, I turn bold ideas into functional and innovative technologies.
         </p>
         <p>
-          My toolkit includes Python, C/C++, Java, Go, TypeScript, React, and leading ML frameworks
-          like PyTorch. I've built everything from encryption utilities to math libraries, always
+          My toolkit includes Python, C/C++, Java, TypeScript, React, and leading ML frameworks
+          like PyTorch and RAG. I've built everything from encryption utilities to math libraries, always
           focusing on performance, usability, and innovation.
         </p>
       </section>
