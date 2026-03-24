@@ -37,57 +37,16 @@ html{
     --text-dark:      #2c5f8a;
 
     /* Background */
-    --bg-base:        #f0f5fa;
-    --bg-gradient:    linear-gradient(145deg, #eef4fb 0%, #f5f8fd 40%, #e8f1f9 70%, #f2f7fc 100%);
+    --bg-base:        #ffffff;
+    --bg-gradient:    #ffffff;
 }
 
 body{
-    background: var(--bg-gradient);
-    background-attachment: fixed;
+    background: #ffffff;
     color: var(--text-primary);
     margin: 0;
     padding: 0;
     min-height: 100vh;
-}
-
-/* ---- Animated soft-blue blobs ---- */
-body::before,
-body::after{
-    content: '';
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(130px);
-    opacity: 0.22;
-    z-index: 0;
-    pointer-events: none;
-}
-
-body::before{
-    width: 640px;
-    height: 640px;
-    background: radial-gradient(circle, #90caee, transparent 70%);
-    top: -160px;
-    right: -120px;
-    animation: floatBlob1 22s ease-in-out infinite;
-}
-
-body::after{
-    width: 520px;
-    height: 520px;
-    background: radial-gradient(circle, #b8ddf5, transparent 70%);
-    bottom: -110px;
-    left: -110px;
-    animation: floatBlob2 28s ease-in-out infinite;
-}
-
-@keyframes floatBlob1{
-    0%, 100%{ transform: translate(0, 0); }
-    50%{ transform: translate(-70px, 55px); }
-}
-
-@keyframes floatBlob2{
-    0%, 100%{ transform: translate(0, 0); }
-    50%{ transform: translate(55px, -70px); }
 }
 
 /* ---- Liquid Glass base class ---- */

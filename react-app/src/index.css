@@ -52,7 +52,7 @@
   --onyx:                 rgba(220, 236, 250, 0.80);
   --eerie-black-1:        rgba(235, 245, 255, 0.75);
   --eerie-black-2:        rgba(240, 248, 255, 0.80);
-  --smoky-black:          #eef4fb;
+  --smoky-black:          #ffffff;
   --white-1:              #2c5f8a;
   --white-2:              #3a7ab5;
   --orange-yellow-crayola: #5aaced;   /* remapped → accent blue */
@@ -114,46 +114,10 @@ input, textarea {
 
 html { font-family: var(--ff-poppins); }
 
-/* ── Soft-white page background with floating blue blobs ── */
+/* ── Pure white page background ── */
 body {
-  background: linear-gradient(145deg, #eef4fb 0%, #f5f8fd 40%, #e8f1f9 70%, #f2f7fc 100%);
-  background-attachment: fixed;
+  background: #ffffff;
   color: var(--text-primary);
-  position: relative;
-}
-
-body::before,
-body::after {
-  content: '';
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(130px);
-  opacity: 0.20;
-  z-index: 0;
-  pointer-events: none;
-}
-
-body::before {
-  width: 560px; height: 560px;
-  background: radial-gradient(circle, #90caee, transparent 70%);
-  top: -140px; right: -110px;
-  animation: blobDrift1 24s ease-in-out infinite;
-}
-
-body::after {
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, #b8ddf5, transparent 70%);
-  bottom: -100px; left: -100px;
-  animation: blobDrift2 30s ease-in-out infinite;
-}
-
-@keyframes blobDrift1 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-65px, 50px); }
-}
-@keyframes blobDrift2 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(50px, -65px); }
 }
 
 strong { font-weight: var(--fw-500); }

@@ -1084,9 +1084,9 @@ textarea.form-input {
 /* ─── Responsive ─── 1250px+ ────────────────────────────────── */
 @media (min-width: 1250px) {
   body::-webkit-scrollbar { width: 20px; }
-  body::-webkit-scrollbar-track { background: #eef4fb; }
+  body::-webkit-scrollbar-track { background: #ffffff; }
   body::-webkit-scrollbar-thumb {
-    border: 5px solid #eef4fb;
+    border: 5px solid #ffffff;
     background: rgba(90, 172, 237, 0.25);
     border-radius: 20px;
     box-shadow: inset 1px 1px 0 rgba(255,255,255,0.50),
