@@ -118,7 +118,7 @@ const projects = [
     title: 'perplx - The Perplexity Coding Agent',
     category: 'ai / ml' as Category,
     tech: 'TypeScript, Web Workers, Cloudflare D1, Perplexity Agent API',
-    link: 'perplx.net',
+    link: 'https://perplx.net/',
   },
   {
     image: '/images/mylogin.png',
