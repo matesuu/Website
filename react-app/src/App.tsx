@@ -34,12 +34,12 @@ const pages: { id: PageId; label: string }[] = [
 const services = [
   {
     icon: faPython,
-    title: 'AI & Machine Learning',
+    title: 'Machine Learning Research',
     text: 'Developing and training ML models for intelligent, real-world solutions using frameworks like PyTorch and TensorFlow.',
   },
   {
     icon: faReact,
-    title: 'Full-Stack Development',
+    title: 'Full-Stack AI Application Development',
     text: 'Developing modern, scalable web applications using React, Node.js, and Next.js, with a focus on performance and clean UI/UX.',
   },
 ];

@@ -14,14 +14,14 @@
   border-radius: 20px;
   padding: 15px;
   box-shadow: var(--shadow-1),
-              inset 0 1px 0 rgba(255,255,255,0.80),
-              inset 0 -1px 0 rgba(180,210,235,0.20);
+              inset 0 1px 0 rgba(255,255,255,0.06),
+              inset 0 -1px 0 rgba(0,0,0,0.30);
   z-index: 1;
   position: relative;
   overflow: hidden;
 }
 
-/* Top liquid-glass shine on every card */
+/* Top matte sheen on every card */
 .sidebar::before,
 .article::before {
   content: '';
@@ -29,8 +29,8 @@
   top: 0; left: 0; right: 0;
   height: 45%;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.50) 0%,
-    rgba(255,255,255,0.08) 60%,
+    rgba(255,255,255,0.06) 0%,
+    rgba(255,255,255,0.01) 60%,
     transparent 100%);
   border-radius: 20px 20px 0 0;
   pointer-events: none;
@@ -40,7 +40,7 @@
 .separator {
   width: 100%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(140,195,235,0.55), transparent);
+  background: linear-gradient(to right, transparent, rgba(90,90,90,0.70), transparent);
   margin: 16px 0;
 }
 
@@ -65,7 +65,7 @@
   content: '';
   position: absolute;
   inset: 1px;
-  background: rgba(235,246,255,0.80);
+  background: rgba(35,35,35,0.92);
   border-radius: inherit;
   z-index: -1;
 }
@@ -130,7 +130,7 @@
   padding-top: 45px;
   border-radius: 14px;
   box-shadow: var(--shadow-2),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   z-index: 1;
   overflow: hidden;
 }
@@ -144,14 +144,14 @@
   z-index: -1;
 }
 
-/* Glass shine on content cards */
+/* Subtle sheen on content cards */
 .content-card::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 40%;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.05) 0%,
     transparent 100%);
   border-radius: 14px 14px 0 0;
   pointer-events: none;
@@ -200,7 +200,7 @@
 
 .info-content .title {
   color: var(--text-primary);
-  background: rgba(200, 225, 245, 0.65);
+  background: rgba(50, 50, 50, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   font-size: var(--fs-8);
@@ -223,7 +223,7 @@
   -webkit-backdrop-filter: var(--glass-blur);
   padding: 10px;
   box-shadow: var(--shadow-2),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   transition: var(--transition-1);
   z-index: 1;
   border: 1px solid var(--glass-border);
@@ -299,13 +299,13 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  background: rgba(235, 245, 255, 0.72);
-  backdrop-filter: blur(22px) saturate(200%);
-  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  background: rgba(28, 28, 28, 0.92);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
   border: 1px solid var(--glass-border);
   border-radius: 12px 12px 0 0;
   box-shadow: var(--shadow-2),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   z-index: 5;
 }
 
@@ -366,7 +366,7 @@
   padding: 20px;
   border-radius: 14px;
   box-shadow: var(--shadow-2),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   z-index: 1;
   overflow: hidden;
 }
@@ -380,14 +380,14 @@
   z-index: -1;
 }
 
-/* Glass top shine on service items */
+/* Subtle sheen on service items */
 .service-item::after {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 42%;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.05) 0%,
     transparent 100%);
   border-radius: 14px 14px 0 0;
   pointer-events: none;
@@ -463,7 +463,7 @@
   left: -30px;
   width: 1px;
   height: calc(100% + 50px);
-  background: linear-gradient(to bottom, transparent, rgba(140,195,235,0.55), transparent);
+  background: linear-gradient(to bottom, transparent, rgba(90,90,90,0.70), transparent);
 }
 
 .timeline-item::after {
@@ -535,7 +535,7 @@
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   cursor: pointer;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.70);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .filter-select--active .select-icon {
@@ -543,7 +543,7 @@
 }
 
 .select-list {
-  background: rgba(240, 248, 255, 0.88);
+  background: rgba(32, 32, 32, 0.96);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   position: absolute;
@@ -578,7 +578,7 @@
 }
 
 .select-item button:hover {
-  background: rgba(90,172,237,0.12);
+  background: rgba(90,172,237,0.10);
 }
 
 .project-list {
@@ -627,10 +627,10 @@
 
 .project-item-icon-box {
   --scale: 0.8;
-  background: rgba(220, 238, 255, 0.75);
+  background: rgba(30, 30, 30, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(180,215,240,0.60);
+  border: 1px solid rgba(80,80,80,0.60);
   color: var(--accent);
   position: absolute;
   top: 50%; left: 50%;
@@ -641,7 +641,7 @@
   opacity: 0;
   z-index: 1;
   transition: var(--transition-1);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .project-item > a:hover .project-item-icon-box {
@@ -695,7 +695,7 @@
   -webkit-backdrop-filter: var(--glass-blur);
   height: 100%;
   box-shadow: var(--shadow-4),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   border-radius: 16px;
   border: 1px solid var(--glass-border);
   z-index: 1;
@@ -710,7 +710,7 @@
   height: 42%;
   border-radius: 16px 16px 0 0;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.05) 0%,
     transparent 100%);
   pointer-events: none;
   z-index: 0;
@@ -813,23 +813,23 @@
   border: 1px solid var(--glass-border);
   border-radius: 14px;
   outline: none;
-  background: rgba(255,255,255,0.55);
+  background: rgba(38,38,38,0.90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   font-family: var(--ff-poppins);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.75);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
   transition: border-color var(--transition-1), box-shadow var(--transition-1);
 }
 
 .form-input::placeholder {
   font-weight: var(--fw-500);
-  color: rgba(90,143,180,0.55);
+  color: rgba(160,184,200,0.45);
 }
 
 .form-input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 18px rgba(90,172,237,0.18),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 textarea.form-input {
@@ -856,7 +856,7 @@ textarea.form-input {
   font-size: var(--fs-6);
   text-transform: capitalize;
   box-shadow: var(--shadow-3),
-              inset 0 1px 0 rgba(255,255,255,0.75);
+              inset 0 1px 0 rgba(255,255,255,0.06);
   z-index: 1;
   transition: var(--transition-1);
   border: 1px solid var(--glass-border);
@@ -881,7 +881,7 @@ textarea.form-input {
   top: 0; left: 0; right: 0;
   height: 48%;
   background: linear-gradient(180deg,
-    rgba(255,255,255,0.45) 0%,
+    rgba(255,255,255,0.05) 0%,
     transparent 100%);
   border-radius: 14px 14px 0 0;
   pointer-events: none;
@@ -1068,7 +1068,7 @@ textarea.form-input {
     border-radius: 0 20px;
     padding: 0 20px;
     box-shadow: var(--shadow-1),
-                inset 0 1px 0 rgba(255,255,255,0.70);
+                inset 0 1px 0 rgba(255,255,255,0.06);
   }
 
   .navbar-list { gap: 30px; padding: 0 20px; }
@@ -1084,15 +1084,15 @@ textarea.form-input {
 /* ─── Responsive ─── 1250px+ ────────────────────────────────── */
 @media (min-width: 1250px) {
   body::-webkit-scrollbar { width: 20px; }
-  body::-webkit-scrollbar-track { background: #ffffff; }
+  body::-webkit-scrollbar-track { background: #1c1c1c; }
   body::-webkit-scrollbar-thumb {
-    border: 5px solid #ffffff;
-    background: rgba(90, 172, 237, 0.25);
+    border: 5px solid #1c1c1c;
+    background: rgba(70, 70, 70, 0.70);
     border-radius: 20px;
-    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.50),
-                inset -1px -1px 0 rgba(255,255,255,0.30);
+    box-shadow: inset 1px 1px 0 rgba(255,255,255,0.06),
+                inset -1px -1px 0 rgba(0,0,0,0.30);
   }
-  body::-webkit-scrollbar-thumb:hover { background: rgba(90, 172, 237, 0.40); }
+  body::-webkit-scrollbar-thumb:hover { background: rgba(90, 172, 237, 0.35); }
   body::-webkit-scrollbar-button { height: 60px; }
 
   .sidebar, .article { width: auto; }
