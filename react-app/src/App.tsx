@@ -152,14 +152,14 @@ const projects = [
 
 const achievements = [
   {
-    image: '/images/hh.jpg',
+    image: '/images/hh.jpeg',
     category: 'HackHayward 2026',
     date: '2026',
     title: 'Winner for Best Use of Perplexity API',
     text: 'Awarded a recognition for innovative use of the Perplexity API in a coding agent project, demonstrating creativity and technical skill',
   },
   {
-    image: '/images/mesa.jpg',
+    image: '/images/mesa.png',
     category: 'MESA CSU East Bay',
     date: '2025',
     title: 'Lead Program Mentor',
