@@ -243,12 +243,10 @@
     document.addEventListener("DOMContentLoaded", function () {
         window.addEventListener("scroll", function () {
             var navbar = document.getElementById("navbar");
-            if (window.scrollY > 250) {
-                navbar.style.backgroundColor = "hsl(0, 0%, 11%)"; 
-                navbar.style.boxShadow = "0 2px 5px rgba(0, 0, 0, 0.3)"; 
+            if (window.scrollY > 80) {
+                navbar.classList.add("scrolled");
             } else {
-                navbar.style.backgroundColor = "rgba(0, 0, 0, 0)"; 
-                navbar.style.boxShadow = "none"; 
+                navbar.classList.remove("scrolled");
             }
         });
     });

@@ -1,130 +1,275 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCheck,
-  faDatabase,
-  faCode,
-  faUpRightFromSquare,
+  faEnvelope,
+  faLocationDot,
+  faFileLines,
+  faChevronDown,
+  faBook,
   faPaperPlane,
-  faBars,
-  faXmark,
-  faArrowDown,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faLinkedin,
-  faSquareGithub,
+  faGithub,
+  faPython,
+  faReact,
 } from '@fortawesome/free-brands-svg-icons';
 import './App.styles.css';
 
-// ─── Data ────────────────────────────────────────────────────────────
-const skills = [
+// ─── Types ───────────────────────────────────────────────────
+
+type PageId = 'about' | 'resume' | 'projects' | 'achievements' | 'contact';
+
+// ─── Data ────────────────────────────────────────────────────
+
+const pages: { id: PageId; label: string }[] = [
+  { id: 'about', label: 'About' },
+  { id: 'resume', label: 'Resume' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'achievements', label: 'Achievements' },
+  { id: 'contact', label: 'Contact' },
+];
+
+const services = [
   {
-    icon: faCheck,
-    title: 'Open Source Development',
-    description:
-      'Worked on collaborative projects on sites such as CodeTriage ranging from web applications to systems programming scripts.',
+    icon: faPython,
+    title: 'AI & Machine Learning',
+    text: 'Developing and training ML models for intelligent, real-world solutions using frameworks like PyTorch and TensorFlow.',
   },
   {
-    icon: faDatabase,
-    title: 'Backend Security & Testing',
-    description:
-      'Experience with symmetric and asymmetric encryption, as well as knowledge of multiple backend APIs.',
-  },
-  {
-    icon: faCode,
-    title: 'Web Design',
-    description:
-      'Experience designing, developing, and implementing websites using modern frameworks like React and TypeScript.',
+    icon: faReact,
+    title: 'Full-Stack Development',
+    text: 'Developing modern, scalable web applications using React, Node.js, and Next.js, with a focus on performance and clean UI/UX.',
   },
 ];
+
+const education = [
+  {
+    degree: 'B.S. Computer Science',
+    school: 'California State University, East Bay',
+    gpa: '',
+    dates: 'Expected December 2026',
+    coursework:
+      'Data Structures and Algorithms, Object Oriented Design, Operating Systems, Computer Networking, Machine Learning.',
+  },
+  {
+    degree: 'A.S. Computer Science',
+    school: 'Chabot College',
+    gpa: '',
+    dates: 'June 2024',
+    coursework: 'Intro to CS, Calculus, Linear Algebra, Physics.',
+  },
+];
+
+const experienceList = [
+  {
+    role: 'Machine Learning Research Intern',
+    company: 'California State University, East Bay',
+    dates: 'Sep 2025 — Present',
+    bullets: [
+      '• Conducting ML research on AI-assisted systems, working with deep learning models and computer vision pipelines.',
+      '• Collaborating with faculty on research papers and experimental design using Python, PyTorch, and OpenCV.',
+    ],
+  },
+  {
+    role: 'Lead Program Mentor',
+    company: 'MESA CSU East Bay',
+    dates: 'Jan 2025 — Present',
+    bullets: [
+      '• Leading mentorship sessions for 20+ students in STEM courses including CS, Math, and Physics.',
+      '• Developing study materials and facilitating workshops on data structures, algorithms, and problem-solving strategies.',
+    ],
+  },
+  {
+    role: 'Teaching Assistant',
+    company: 'California State University, East Bay',
+    dates: 'Sep 2025 — Present',
+    bullets: [
+      '• Leading lab sessions for students in Data Structures and OOP courses, emphasizing ADTs and algorithmic design.',
+      '• Mentoring students in debugging, profiling, and code optimization techniques.',
+    ],
+  },
+  {
+    role: 'Freelance Software Engineer',
+    company: 'Self-Employed',
+    dates: 'Jan 2024 — Present',
+    bullets: [
+      '• Building full-stack web applications and automation tools for clients using React, Node.js, and Python.',
+      '• Delivering production-ready code with clean architecture, testing, and CI/CD deployment.',
+    ],
+  },
+];
+
+const skills = [
+  { label: 'Languages', text: 'Python, C/C++, Java, Go, TypeScript, JavaScript, SQL' },
+  { label: 'ML & AI', text: 'PyTorch, RAG, GraphRAG, Multithreading' },
+  { label: 'Backend', text: 'Node.js, Flask, Django, REST APIs, Docker, AWS, MongoDB' },
+  { label: 'Frontend', text: 'React, React Native, Tailwind CSS' },
+  { label: 'Tools', text: 'Git, GitHub, GitLab, Docker' },
+];
+
+const projectCategories = ['all', 'ai / ml', 'software', 'tools'] as const;
+type Category = (typeof projectCategories)[number];
 
 const projects = [
   {
     image: '/images/secure.jpeg',
-    title: 'User Login Credential Encryption Engine',
-    description:
-      'MYLogin is a lightweight security utility written in Python for convenient storage and retrieval of login information with multi-layered encryption.',
+    title: 'MYLogin',
+    category: 'software' as Category,
+    tech: 'Python, Encryption, CLI',
     link: 'https://github.com/matesuu/MYLogin',
   },
   {
     image: '/images/matrix.png',
-    title: 'Math Library for Matrices and Linear Algebra',
-    description:
-      'A portable and compact math library written in C/C++ for working with matrices and numerical algorithms.',
+    title: 'MANA',
+    category: 'software' as Category,
+    tech: 'C/C++, Linear Algebra, Numerical Methods',
     link: 'https://github.com/matesuu/MANA',
   },
   {
     image: '/images/git.png',
-    title: 'Git Workflow Automation Tool',
-    description: 'An automation tool for Git workflows and GitHub written in C and Bash.',
+    title: 'autogit',
+    category: 'tools' as Category,
+    tech: 'C, Bash, Git Automation',
     link: 'https://github.com/matesuu/autogit',
   },
   {
     image: '/images/flashcards.png',
-    title: 'Real-Time Learning Application',
-    description:
-      'A robust Java app that curates user-generated content and study sets to accommodate personalized learning pathways.',
+    title: 'CogniStudy',
+    category: 'software' as Category,
+    tech: 'Java, Education, Personalized Learning',
     link: 'https://github.com/matesuu/CogniStudy',
   },
 ];
 
-type TabId = 'skills' | 'experience' | 'education';
-
-const tabData: Record<TabId, { label: string; items: { span: string; text: string }[] }> = {
-  skills: {
-    label: 'Skills',
-    items: [
-      { span: 'Programming Languages', text: 'Python, C/C++, Java, Go, TypeScript, JavaScript, SQL' },
-      { span: 'ML and AI Systems', text: 'PyTorch, RAG, GraphRAG, Multithreading' },
-      { span: 'Backend and Database', text: 'Node.js, Flask, Django, REST APIs, Docker, AWS, MongoDB' },
-      { span: 'Frontend', text: 'React, React Native, Tailwind' },
-      { span: 'Developer Tools', text: 'Git, GitHub, GitLab' },
-    ],
+const achievements = [
+  {
+    image: '/images/field.jpg',
+    category: 'MESA CSU East Bay',
+    date: '2025',
+    title: 'Lead Program Mentor',
+    text: 'Selected as lead mentor for the MESA program, supporting STEM students through workshops and 1-on-1 mentoring.',
   },
-  experience: {
-    label: 'Experience',
-    items: [
-      { span: 'Jan 2026 – Present', text: 'Machine Learning Research Intern at California State University, East Bay' },
-      { span: 'Sep 2025 – Present', text: 'Lead Program Mentor at MESA CSU East Bay' },
-      { span: 'Aug 2025 – Present', text: 'Teaching Assistant at California State University, East Bay' },
-      { span: 'Aug 2024 – Present', text: 'Freelance Software Engineer' },
-    ],
+  {
+    image: '/images/4k.jpg',
+    category: 'Cal State East Bay',
+    date: '2025',
+    title: 'ML Research Position',
+    text: 'Awarded a research position in the College of Science to work on ML-powered systems and computer vision.',
   },
-  education: {
-    label: 'Education',
-    items: [
-      { span: 'December 2026', text: 'B.S. Computer Science – California State University, East Bay' },
-      { span: 'June 2024', text: 'A.S. Computer Science – Chabot College' },
-    ],
-  },
-};
+];
 
-// ─── Components ──────────────────────────────────────────────────────
+// ─── Sidebar ─────────────────────────────────────────────────
 
-function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+function Sidebar() {
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
-      <a href="#hero" className="navbar__logo">
-        <span>m</span>ateo
-      </a>
-      <button className="navbar__toggle" onClick={() => setMenuOpen(!menuOpen)}>
-        <FontAwesomeIcon icon={menuOpen ? faXmark : faBars} />
-      </button>
-      <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>
-        {['hero', 'projects', 'about', 'contact'].map((id) => (
-          <li key={id}>
-            <a href={`#${id}`} onClick={() => setMenuOpen(false)}>
-              {id === 'hero' ? 'Home' : id.charAt(0).toUpperCase() + id.slice(1)}
-            </a>
+    <aside className={`sidebar ${expanded ? 'sidebar--active' : ''}`}>
+      <div className="sidebar-info">
+        <figure className="avatar-box">
+          <img src="/images/headshot.jpeg" alt="Mateo Alado" />
+        </figure>
+
+        <div className="info-content">
+          <h1 className="name">Mateo Alado</h1>
+          <p className="title">Software Engineer</p>
+        </div>
+
+        <button className="info-more-btn" onClick={() => setExpanded(!expanded)}>
+          <span>Show Contacts</span>
+          <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
+        </button>
+      </div>
+
+      <div className="sidebar-info-more">
+        <div className="separator" />
+
+        <ul className="contacts-list">
+          <li className="contact-item">
+            <div className="icon-box">
+              <FontAwesomeIcon icon={faFileLines} />
+            </div>
+            <div className="contact-info">
+              <p className="contact-title">Resume</p>
+              <a href="/images/Mateo Alado - Resume.pdf" className="contact-link" target="_blank" rel="noopener noreferrer">
+                Download
+              </a>
+            </div>
+          </li>
+
+          <li className="contact-item">
+            <div className="icon-box">
+              <FontAwesomeIcon icon={faEnvelope} />
+            </div>
+            <div className="contact-info">
+              <p className="contact-title">Email</p>
+              <a href="mailto:aladomateo@gmail.com" className="contact-link">
+                aladomateo@gmail.com
+              </a>
+            </div>
+          </li>
+
+          <li className="contact-item">
+            <div className="icon-box">
+              <FontAwesomeIcon icon={faLocationDot} />
+            </div>
+            <div className="contact-info">
+              <p className="contact-title">Location</p>
+              <address>San Francisco Bay Area, CA</address>
+            </div>
+          </li>
+
+          <li className="contact-item">
+            <div className="icon-box">
+              <FontAwesomeIcon icon={faLinkedin} />
+            </div>
+            <div className="contact-info">
+              <p className="contact-title">LinkedIn</p>
+              <a href="https://www.linkedin.com/in/mateoalado/" className="contact-link" target="_blank" rel="noopener noreferrer">
+                mateoalado
+              </a>
+            </div>
+          </li>
+
+          <li className="contact-item">
+            <div className="icon-box">
+              <FontAwesomeIcon icon={faGithub} />
+            </div>
+            <div className="contact-info">
+              <p className="contact-title">GitHub</p>
+              <a href="https://github.com/matesuu" className="contact-link" target="_blank" rel="noopener noreferrer">
+                matesuu
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  );
+}
+
+// ─── Navbar ──────────────────────────────────────────────────
+
+function Navbar({
+  activePage,
+  onNavigate,
+}: {
+  activePage: PageId;
+  onNavigate: (id: PageId) => void;
+}) {
+  return (
+    <nav className="navbar">
+      <ul className="navbar-list">
+        {pages.map((p) => (
+          <li className="navbar-item" key={p.id}>
+            <button
+              className={`navbar-link ${activePage === p.id ? 'navbar-link--active' : ''}`}
+              onClick={() => onNavigate(p.id)}
+            >
+              {p.label}
+            </button>
           </li>
         ))}
       </ul>
@@ -132,198 +277,345 @@ function Navbar() {
   );
 }
 
-function Hero() {
-  return (
-    <section id="hero" className="hero">
-      <div className="hero__bg" />
-      <div className="hero__content">
-        <p className="hero__label">Open Source Software Engineer</p>
-        <h1 className="hero__title">
-          Hi, I'm <span className="accent">Mateo</span>.
-          <br />I Study Computer Science at
-          <br />
-          <span className="accent">Cal State East Bay</span>
-        </h1>
-        <a href="#projects" className="hero__scroll">
-          <FontAwesomeIcon icon={faArrowDown} />
-        </a>
-      </div>
-    </section>
-  );
-}
+// ─── About Page ──────────────────────────────────────────────
 
-function Skills() {
+function AboutPage() {
   return (
-    <section id="skills-section" className="section">
-      <div className="container">
-        <h2 className="section__title">Skills</h2>
-        <div className="skills-grid">
-          {skills.map((s, i) => (
-            <div key={i} className="skill-card">
-              <FontAwesomeIcon icon={s.icon} className="skill-card__icon" />
-              <h3>{s.title}</h3>
-              <p>{s.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
+    <article className="article article--active">
+      <header>
+        <h2 className="h2 article-title">About me</h2>
+      </header>
 
-function Projects() {
-  return (
-    <section id="projects" className="section">
-      <div className="container">
-        <h2 className="section__title">My Work</h2>
-        <div className="projects-grid">
-          {projects.map((p, i) => (
-            <a
-              key={i}
-              className="project-card"
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div className="project-card__img-wrap">
-                <img src={p.image} alt={p.title} />
-              </div>
-              <div className="project-card__body">
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <span className="project-card__link">
-                  View Project <FontAwesomeIcon icon={faUpRightFromSquare} />
+      <section className="about-text">
+        <p>
+          I'm a Computer Science student at California State University – East Bay, specializing in
+          Machine Learning, AI, and scalable software systems. With a strong foundation in algorithms,
+          web development, and ML frameworks, I turn bold ideas into smart, functional technology.
+        </p>
+        <p>
+          My toolkit includes Python, C/C++, Java, Go, TypeScript, React, and leading ML frameworks
+          like PyTorch. I've built everything from encryption utilities to math libraries, always
+          focusing on performance, usability, and innovation.
+        </p>
+      </section>
+
+      <section className="service">
+        <h3 className="h3 service-title">What I'm doing</h3>
+        <ul className="service-list">
+          {services.map((s, i) => (
+            <li className="service-item" key={i}>
+              <div className="service-icon-box">
+                <span className="service-icon">
+                  <FontAwesomeIcon icon={s.icon} />
                 </span>
               </div>
-            </a>
+              <div className="service-content-box">
+                <h4 className="h4 service-item-title">{s.title}</h4>
+                <p className="service-item-text">{s.text}</p>
+              </div>
+            </li>
           ))}
-        </div>
-      </div>
-    </section>
+        </ul>
+      </section>
+    </article>
   );
 }
 
-function About() {
-  const [activeTab, setActiveTab] = useState<TabId>('skills');
+// ─── Resume Page ─────────────────────────────────────────────
 
+function ResumePage() {
   return (
-    <section id="about" className="section">
-      <div className="container">
-        <div className="about-grid">
-          <div className="about__image">
-            <img src="/images/headshot.jpeg" alt="Mateo Alado" />
-          </div>
-          <div className="about__text">
-            <h2 className="section__title">About Me</h2>
-            <p>
-              🚀 Hi there! My name is Mateo Alado.
-            </p>
-            <p>
-              As a highly driven fourth-year studying Computer Science at Cal State East Bay, I am
-              deeply passionate about the rapidly evolving world of Artificial Intelligence and
-              Software Engineering.
-            </p>
-            <p>
-              My completed coursework includes Data Structures and Algorithms, Object Oriented
-              Design, Operating Systems, and Computer Networking. I aspire to break into the AI and
-              Web Development sphere as a software engineer and develop innovative solutions to
-              real-world problems.
-            </p>
+    <article className="article article--active">
+      <header>
+        <h2 className="h2 article-title">Resume</h2>
+      </header>
 
-            <div className="tabs">
-              {(Object.keys(tabData) as TabId[]).map((id) => (
-                <button
-                  key={id}
-                  className={`tabs__btn ${activeTab === id ? 'tabs__btn--active' : ''}`}
-                  onClick={() => setActiveTab(id)}
-                >
-                  {tabData[id].label}
-                </button>
-              ))}
-            </div>
-
-            <ul className="tab-list">
-              {tabData[activeTab].items.map((item, i) => (
-                <li key={i}>
-                  <span className="tab-list__label">{item.span}</span>
-                  {item.text}
-                </li>
-              ))}
-            </ul>
+      {/* Education */}
+      <section className="timeline">
+        <div className="title-wrapper">
+          <div className="icon-box">
+            <FontAwesomeIcon icon={faBook} />
           </div>
+          <h3 className="h3">Education</h3>
         </div>
-      </div>
-    </section>
+
+        <ol className="timeline-list">
+          {education.map((e, i) => (
+            <li className="timeline-item" key={i}>
+              <h4 className="h4 timeline-item-title place">{e.degree}</h4>
+              <h4 className="h4 timeline-item-title place1">
+                <em>{e.school}</em>
+              </h4>
+              {e.gpa && <span className="duration-gpa">{e.gpa}</span>}
+              <span className="duration-gpa">{e.dates}</span>
+              <p className="timeline-text">
+                <strong>Relevant Coursework: </strong>
+                {e.coursework}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Experience */}
+      <section className="timeline">
+        <div className="title-wrapper">
+          <div className="icon-box">
+            <FontAwesomeIcon icon={faBook} />
+          </div>
+          <h3 className="h3">Experience</h3>
+        </div>
+
+        <ol className="timeline-list">
+          {experienceList.map((e, i) => (
+            <li className="timeline-item" key={i}>
+              <h4 className="h4 timeline-item-title place">{e.role}</h4>
+              <h4 className="h4 timeline-item-title place1">
+                <em>{e.company}</em>
+              </h4>
+              <span className="duration-gpa">{e.dates}</span>
+              <ul className="timeline-text">
+                {e.bullets.map((b, j) => (
+                  <li key={j}>{b}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* Skills */}
+      <section className="skill">
+        <h3 className="h3 skills-title">My skills</h3>
+        <ul className="skills-list content-card">
+          {skills.map((s, i) => (
+            <li className="skills-item" key={i}>
+              <div className="title-wrapper">
+                <h5 className="h5 skill-title">{s.label}:</h5>
+                <span className="skill-text">{s.text}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
   );
 }
 
-function Contact() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const [status, setStatus] = useState('');
+// ─── Projects Page ───────────────────────────────────────────
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('Thanks for reaching out! I will get back to you soon.');
-    formRef.current?.reset();
-    setTimeout(() => setStatus(''), 4000);
+function ProjectsPage() {
+  const [activeFilter, setActiveFilter] = useState<Category>('all');
+  const [selectOpen, setSelectOpen] = useState(false);
+
+  const filtered = projects.filter(
+    (p) => activeFilter === 'all' || p.category === activeFilter
+  );
+
+  const handleFilter = (cat: Category) => {
+    setActiveFilter(cat);
+    setSelectOpen(false);
   };
 
   return (
-    <section id="contact" className="section">
-      <div className="container">
-        <div className="contact-grid">
-          <div className="contact__info">
-            <h2 className="section__title">Get In Touch</h2>
-            <p className="contact__email">
-              <FontAwesomeIcon icon={faPaperPlane} className="accent" /> aladomateo@gmail.com
-            </p>
-            <div className="contact__socials">
-              <a href="https://www.linkedin.com/in/mateoalado/" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a href="https://github.com/matesuu" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faSquareGithub} />
-              </a>
-            </div>
-          </div>
-          <form ref={formRef} className="contact__form" onSubmit={handleSubmit}>
-            <input type="text" placeholder="Your Name" required />
-            <input type="email" placeholder="Your Email" required />
-            <textarea rows={6} placeholder="Your Message" required />
-            <div className="contact__actions">
-              <button type="submit" className="btn btn--filled">Send Message</button>
-              <a href="/images/Mateo Alado - Resume.pdf" download className="btn btn--outline">
-                Download Resume
-              </a>
-            </div>
-            {status && <p className="contact__status">{status}</p>}
-          </form>
+    <article className="article article--active">
+      <header>
+        <h2 className="h2 article-title">Projects</h2>
+      </header>
+
+      <section>
+        {/* Desktop filter */}
+        <ul className="filter-list">
+          {projectCategories.map((cat) => (
+            <li className="filter-item" key={cat}>
+              <button
+                className={activeFilter === cat ? 'active' : ''}
+                onClick={() => handleFilter(cat)}
+              >
+                {cat === 'all' ? 'All' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile select */}
+        <div className="filter-select-box">
+          <button
+            className={`filter-select ${selectOpen ? 'filter-select--active' : ''}`}
+            onClick={() => setSelectOpen(!selectOpen)}
+          >
+            <span>{activeFilter === 'all' ? 'All' : activeFilter}</span>
+            <span className="select-icon">
+              <FontAwesomeIcon icon={faChevronDown} />
+            </span>
+          </button>
+          <ul className="select-list">
+            {projectCategories.map((cat) => (
+              <li className="select-item" key={cat}>
+                <button onClick={() => handleFilter(cat)}>
+                  {cat === 'all' ? 'All' : cat}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
-      </div>
-    </section>
+
+        {/* Grid */}
+        <ul className="project-list">
+          {filtered.map((p, i) => (
+            <li className="project-item project-item--active" key={i}>
+              <a href={p.link} target="_blank" rel="noopener noreferrer">
+                <figure className="project-img">
+                  <div className="project-item-icon-box">
+                    <FontAwesomeIcon icon={faEye} />
+                  </div>
+                  <img src={p.image} alt={p.title} loading="lazy" />
+                </figure>
+                <h3 className="project-title">{p.title}</h3>
+                <p className="project-category">{p.tech}</p>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
   );
 }
 
-function Footer() {
+// ─── Achievements Page ───────────────────────────────────────
+
+function AchievementsPage() {
   return (
-    <footer className="footer">
-      <p>© {new Date().getFullYear()} Mateo Alado. Built with React & TypeScript.</p>
-    </footer>
+    <article className="article article--active">
+      <header>
+        <h2 className="h2 article-title">Achievements</h2>
+      </header>
+
+      <section className="achievements-posts">
+        <ul className="achievements-posts-list">
+          {achievements.map((a, i) => (
+            <li className="achievements-post-item" key={i}>
+              <a href="#">
+                <figure className="achievements-banner-box">
+                  <img src={a.image} alt={a.title} loading="lazy" />
+                </figure>
+                <div className="achievements-content">
+                  <div className="achievements-meta">
+                    <p className="achievements-category">{a.category}</p>
+                    <span className="dot" />
+                    <time>{a.date}</time>
+                  </div>
+                  <h3 className="h4 achievements-item-title">{a.title}</h3>
+                  <p className="achievements-text">{a.text}</p>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </article>
   );
 }
 
-// ─── App ─────────────────────────────────────────────────────────────
+// ─── Contact Page ────────────────────────────────────────────
+
+function ContactPage() {
+  const formRef = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState('');
+  const [formValid, setFormValid] = useState(false);
+
+  const handleInput = useCallback(() => {
+    setFormValid(formRef.current?.checkValidity() ?? false);
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      setStatus('Thanks for reaching out! I will get back to you soon.');
+      formRef.current?.reset();
+      setFormValid(false);
+      setTimeout(() => setStatus(''), 4000);
+    },
+    []
+  );
+
+  return (
+    <article className="article article--active">
+      <header>
+        <h2 className="h2 article-title">Contact</h2>
+      </header>
+
+      <section className="mapbox">
+        <figure>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d472244.646295437!2d-121.67409044507838!3d37.35972679412347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b!2sSan%20Jose%2C%20CA!5e1!3m2!1sen!2sus!4v1748325762049!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            loading="lazy"
+            title="Map"
+          />
+        </figure>
+      </section>
+
+      <section className="contact-form">
+        <h3 className="h3 form-title">Contact Form</h3>
+        <form ref={formRef} className="form" onSubmit={handleSubmit}>
+          <div className="input-wrapper">
+            <input
+              type="text"
+              className="form-input"
+              placeholder="Full name"
+              required
+              onInput={handleInput}
+            />
+            <input
+              type="email"
+              className="form-input"
+              placeholder="Email address"
+              required
+              onInput={handleInput}
+            />
+          </div>
+          <textarea
+            className="form-input"
+            placeholder="Your Message"
+            required
+            onInput={handleInput}
+          />
+          <button className="form-btn" type="submit" disabled={!formValid}>
+            <FontAwesomeIcon icon={faPaperPlane} />
+            <span>Send Message</span>
+          </button>
+          {status && <p className="form-status">{status}</p>}
+        </form>
+      </section>
+    </article>
+  );
+}
+
+// ─── App ─────────────────────────────────────────────────────
 
 export default function App() {
+  const [activePage, setActivePage] = useState<PageId>('about');
+
+  const handleNavigate = useCallback((id: PageId) => {
+    setActivePage(id);
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
-    <>
-      <Navbar />
-      <Hero />
-      <Skills />
-      <Projects />
-      <About />
-      <Contact />
-      <Footer />
-    </>
+    <main className="main-layout">
+      <Sidebar />
+
+      <div className="main-content">
+        <Navbar activePage={activePage} onNavigate={handleNavigate} />
+
+        {activePage === 'about' && <AboutPage />}
+        {activePage === 'resume' && <ResumePage />}
+        {activePage === 'projects' && <ProjectsPage />}
+        {activePage === 'achievements' && <AchievementsPage />}
+        {activePage === 'contact' && <ContactPage />}
+      </div>
+    </main>
   );
 }
