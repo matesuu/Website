@@ -185,7 +185,7 @@ function Sidebar() {
         </div>
 
         <button className="info-more-btn" onClick={() => setExpanded(!expanded)}>
-          <span>Show Contacts</span>
+          <span>{expanded ? 'Hide' : 'Contacts'}</span>
           <FontAwesomeIcon icon={faChevronDown} className="chevron-icon" />
         </button>
       </div>
