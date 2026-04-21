@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Mateo Alado</title>
+    <title>mateoalado.ai</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -195,6 +195,36 @@
                         </div>
                     </div>
 
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="#" target="_blank">
+                                <strong>Project Title</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">Language</span>
+                                <a href="#" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">Project description.</span>
+                        </div>
+                    </div>
+
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="#" target="_blank">
+                                <strong>Project Title</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">Language</span>
+                                <a href="#" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">Project description.</span>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
@@ -296,12 +326,14 @@
 
     <!-- Tab switching -->
     <script>
-        document.querySelectorAll('.tab-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active-tab-btn'); });
-                document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active-panel'); });
-                btn.classList.add('active-tab-btn');
-                document.getElementById(btn.dataset.tab).classList.add('active-panel');
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.tab-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active-tab-btn'); });
+                    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active-panel'); });
+                    btn.classList.add('active-tab-btn');
+                    document.getElementById(btn.dataset.tab).classList.add('active-panel');
+                });
             });
         });
     </script>
