@@ -1,273 +1,451 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="images/bluem.png" type="image/png" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mateo Alado's Website</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/8d5439d9ac.js" crossorigin="anonymous"></script>
-    <script src="index.js"></script>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "8X41q2CI0nfqJCVCk",
-      });
-   })();
-</script>
-
+    <title>Mateo Alado</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-
-<!----------------Header Section------------------->
-
-
 <body>
-     
-    <div id="header">
-        <nav id="navbar">
-            <h1 class="logo"><a href="#header"><span>m</span>ateo</a></h1>
-            <!----<img src="images/logo.png" alt="Logo" width="243" height="85">------>
-            <ul id="sidemenu">
-                <li><a href="#header">Home</a></li>
-                <li><a href="#portfolio ">Projects</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact Me</a></li>
-                <i class="fas fa-solid fa-xmark" onclick="closemenu()"></i>
-            </ul>
-            <i class="fas fa-solid fa-bars" onclick="openmenu()"></i>
-        </nav>
+    <div class="app-shell">
 
-        <div class="container">
-            
-
-           
-            <div class="header-text">
-                <p>Open Source Software Engineer</p>
-                <h1>Hi, I'm <span>Mateo</span>. I Study<br>Computer Science at California State University, East Bay</h1>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-brand">
+                <a href="#hero" class="header-brand-name">mateo alado</a>
             </div>
-            
-        </div>
+            <nav class="header-nav">
+                <span class="bracket">[</span><a href="#skills">skills</a><span class="bracket">]</span>
+                <span class="bracket">[</span><a href="#projects">projects</a><span class="bracket">]</span>
+                <span class="bracket">[</span><a href="#about">about</a><span class="bracket">]</span>
+                <span class="bracket">[</span><a href="#contact">contact</a><span class="bracket">]</span>
+            </nav>
+        </header>
+
+        <!-- MAIN -->
+        <main class="shell stack" id="hero">
+
+            <!-- HERO PANEL -->
+            <section class="panel stack-sm">
+                <div class="section-header">
+                    <div class="label">home</div>
+                    <div class="meta-label">open source software engineer</div>
+                </div>
+                <hr class="separator" />
+                <div class="grid two-up align-start auth-hero">
+                    <div class="auth-orb-panel">
+                        <div class="auth-orb-stage">
+                            <div class="ascii-orb-wrap" role="button" tabindex="0" aria-label="Animated ASCII orb">
+                                <pre class="ascii-orb" aria-hidden="true"></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stack-sm auth-copy">
+                        <div class="title mt38">Hi, I'm <span class="accent">Mateo</span>.</div>
+                        <div class="muted">I study Computer Science at California State University, East Bay. I build systems tools, ML utilities, and open source software.</div>
+                        <div class="row gap-sm wrap">
+                            <a href="#projects" class="button button-primary">view projects</a>
+                            <a href="#contact" class="button">contact me</a>
+                            <a href="images/Mateo Alado - Resume.pdf" download class="button">resume ↓</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SKILLS SECTION -->
+            <section class="panel stack-sm" id="skills">
+                <div class="label">skills</div>
+                <hr class="separator" />
+                <div class="grid two-up align-start">
+                    <div class="stat-box stack-sm">
+                        <div class="label">languages</div>
+                        <div class="title">Python · C/C++ · Java · Go</div>
+                        <div class="muted">TypeScript · JavaScript · SQL</div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">ml &amp; ai</div>
+                        <div class="title">PyTorch · RAG · GraphRAG</div>
+                        <div class="muted">Multithreading · LLM pipelines</div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">backend &amp; database</div>
+                        <div class="title">Node.js · Flask · Django</div>
+                        <div class="muted">REST APIs · Docker · AWS · MongoDB</div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">frontend</div>
+                        <div class="title">React · React Native</div>
+                        <div class="muted">Tailwind · HTML · CSS</div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">open source dev</div>
+                        <div class="title">collaborative projects</div>
+                        <div class="muted">CodeTriage · web apps · systems scripts</div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">security &amp; testing</div>
+                        <div class="title">backend encryption</div>
+                        <div class="muted">symmetric &amp; asymmetric · backend APIs</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROJECTS SECTION -->
+            <section class="panel stack-sm" id="projects">
+                <div class="label">projects</div>
+                <hr class="separator" />
+                <div class="workspace-list">
+
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="https://github.com/matesuu/MYLogin" target="_blank">
+                                <strong>User Login Credential Encryption Engine</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">Python</span>
+                                <a href="https://github.com/matesuu/MYLogin" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">MYLogin is a lightweight security utility written in Python that allows for convenient storage and retrieval of login information with multi-layered encryption.</span>
+                        </div>
+                    </div>
+
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="https://github.com/matesuu/MANA" target="_blank">
+                                <strong>Math Library for Matrices and Linear Algebra</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">C/C++</span>
+                                <a href="https://github.com/matesuu/MANA" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">A portable and compact math library written in C/C++ for working with matrices and numerical algorithms.</span>
+                        </div>
+                    </div>
+
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="https://github.com/matesuu/autogit" target="_blank">
+                                <strong>Git Workflow Automation Tool</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">C · Bash</span>
+                                <a href="https://github.com/matesuu/autogit" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">An automation tool for Git workflows and GitHub written in C and Bash.</span>
+                        </div>
+                    </div>
+
+                    <div class="workspace-row panel panel-tight thread-card">
+                        <div class="thread-row-header">
+                            <a class="thread-title-link" href="https://github.com/matesuu/CogniStudy" target="_blank">
+                                <strong>Real-Time Learning Application</strong>
+                            </a>
+                            <div class="row gap-sm wrap thread-actions">
+                                <span class="meta-label">Java</span>
+                                <a href="https://github.com/matesuu/CogniStudy" target="_blank" class="button button-small">view ↗</a>
+                            </div>
+                        </div>
+                        <div class="workspace-main">
+                            <span class="muted">A robust Java app that curates user generated content and study sets to accommodate personalized learning pathways with interactive review and assessments.</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ABOUT / EXPERIENCE / EDUCATION -->
+            <section class="panel stack-sm" id="about">
+                <div class="section-header">
+                    <div class="label">about</div>
+                    <div class="row gap-sm">
+                        <button class="button button-small tab-btn active-tab-btn" data-tab="bio">bio</button>
+                        <button class="button button-small tab-btn" data-tab="experience">experience</button>
+                        <button class="button button-small tab-btn" data-tab="education">education</button>
+                    </div>
+                </div>
+                <hr class="separator" />
+
+                <div id="bio" class="tab-panel active-panel">
+                    <p class="muted">
+                        Hi there! My name is Mateo Alado. As a highly driven fourth-year studying Computer Science at Cal State East Bay, I am deeply passionate about the rapidly evolving world of Artificial Intelligence and Software Engineering.<br><br>
+                        My completed coursework includes: Data Structures and Algorithms, Object Oriented Design, Operating Systems, and Computer Networking. I aspire to break into the AI and Web Development sphere as a software engineer and use my skills to develop innovative solutions to real world problems.
+                    </p>
+                </div>
+
+                <div id="experience" class="tab-panel">
+                    <div class="workspace-list">
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">Machine Learning Research Intern</strong>
+                                <span class="meta-label">Jan 2026 – Present</span>
+                            </div>
+                            <span class="muted">California State University, East Bay</span>
+                        </div>
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">Lead Program Mentor</strong>
+                                <span class="meta-label">Sep 2025 – Present</span>
+                            </div>
+                            <span class="muted">MESA CSU East Bay</span>
+                        </div>
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">Teaching Assistant</strong>
+                                <span class="meta-label">Aug 2025 – Present</span>
+                            </div>
+                            <span class="muted">California State University, East Bay</span>
+                        </div>
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">Freelance Software Engineer</strong>
+                                <span class="meta-label">Aug 2024 – Present</span>
+                            </div>
+                            <span class="muted">Independent</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="education" class="tab-panel">
+                    <div class="workspace-list">
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">B.S. Computer Science</strong>
+                                <span class="meta-label">December 2026</span>
+                            </div>
+                            <span class="muted">California State University, East Bay</span>
+                        </div>
+                        <div class="workspace-row panel panel-tight thread-card">
+                            <div class="thread-row-header">
+                                <strong class="thread-title-link">A.S. Computer Science</strong>
+                                <span class="meta-label">June 2024</span>
+                            </div>
+                            <span class="muted">Chabot College</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section class="panel stack-sm" id="contact">
+                <div class="label">contact</div>
+                <hr class="separator" />
+                <div class="grid two-up align-start">
+                    <div class="stack-sm">
+                        <div class="stat-box stack-sm">
+                            <div class="label">email</div>
+                            <div class="title">aladomateo@gmail.com</div>
+                        </div>
+                        <div class="stat-box stack-sm">
+                            <div class="label">links</div>
+                            <div class="row gap-sm wrap">
+                                <a href="https://www.linkedin.com/in/mateoalado/" target="_blank" class="button">linkedin ↗</a>
+                                <a href="https://github.com/matesuu" target="_blank" class="button">github ↗</a>
+                                <a href="images/Mateo Alado - Resume.pdf" download class="button">resume ↓</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-box stack-sm">
+                        <div class="label">send a message</div>
+                        <form id="contact-form" class="stack-sm" onsubmit="sendEmail(event)">
+                            <input type="text" id="c-name" placeholder="your name" required />
+                            <input type="email" id="c-email" placeholder="your email" required />
+                            <textarea id="c-message" rows="5" placeholder="your message"></textarea>
+                            <button type="submit" class="button button-primary">send message</button>
+                            <span id="form-msg" class="muted"></span>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <span>~*~ © mateo alado ~*~</span>
+            <span><a href="https://github.com/matesuu" target="_blank">github</a></span>
+        </footer>
+
     </div>
 
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function(){
+            emailjs.init({ publicKey: "8X41q2CI0nfqJCVCk" });
+        })();
 
-
-
-<!----------------What I do Section------------------->
-<div id="services">
-    <div class="container">
-        <div class="sub-title">Skills</div>
-        <div class="services-list">
-            <div>
-                <i class="fa-solid fa-check"></i>
-                <h2>Open Source Development</h2>
-                <p>As a freelance developer, I have worked on numerous collaborative projects on sites such as CodeTriage ranging from web applications to systems progrmaming scripts.</p>
-                
-            </div>
-            <div>
-                <i class="fa-solid fa-database"></i>
-                <h2>Backend Security and Testing</h2>
-                <p>Experience with both symmetric and asymmetric encryption, as well as knowledge of multiple backend APIs.</p>
-                
-            </div>
-            <div>
-                <i class="fa-solid fa-code"></i>
-                <h2>Web Design</h2>
-                <p>I have experience designing, developing, and implementing websites using HTML, CSS, and Javascript. I used these skills to build this website</p>
-                
-            </div>
-        </div>
-    </div>
-</div>
-
-<!----------------Projects Section------------------->
-<div id="portfolio">
-    <div class="container">
-        <h1 class="sub-title">My Work</h1>
-        <div class="work-list">
-            <div class="work">
-                <img src="images/secure.jpeg">
-                <div class="layer">
-                    <h3><b>User Login Credential Encryption Engine</b></h3>
-                    <p>MYLogin is a lightweight security utility written in Python that allows for convinient storage and retrieval
-                        of login information with multi-layered encryption</p>
-                    <a href="https://github.com/matesuu/MYLogin"><i class="fa-solid fa-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/matrix.png">
-                <div class="layer">
-                    <h3><b>Math Library for Matrices and Linear Algebra</b></h3>
-                    <p>A portable and compact math library written in C/C++ for working with matrices and numerical algorithms.</p>
-                    <a href="https://github.com/matesuu/MANA"><i class="fa-solid fa-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/git.png">
-                <div class="layer">
-                    <h3><b>Git Workflow Automation Tool</b></h3>
-                    <p>An automation tool for Git workflows and GitHub written in C and Bash.</p>
-                    <a href="https://github.com/matesuu/autogit"><i class="fa-solid fa-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="work">
-                <img src="images/flashcards.png">
-                <div class="layer">
-                    <h3><b>Real-Time Learning Application</b></h3>
-                    <p>An robust Java app that curates user generated content and study sets to accomodate 
-                        personalized learning pathways with interactive review and assessments.</p>
-                    <a href="https://github.com/matesuu/CogniStudy"><i class="fa-solid fa-up-right-from-square"></i></a>
-                </div>
-            </div>
-            <div class="">
-                <div class="layer">
-                    <a href="#"><i class="fa-solid fa-up-right-from-square"></i></a>
-                </div>
-            </div>
-            
-        </div>
-        <a href="#" class="btn">See More</a>
-    </div>
-</div>
-
-
-<!----------------About Me Section------------------->
-
-<div id="about">
-    <div class="container">
-        <div class="row">
-            <div class="about-col-1">
-                <img src="images/headshot.jpeg" alt="Mateo Alado" width="450" height="368">
-            </div>
-            <div class="about-col-2">
-                <h1 class="sub-title">About Me</h1>
-                <p>&#128640; Hi there! My name is Mateo Alado.<br><br>
-
-                    As a highly driven fourth-year studying Computer Science at Cal State East Bay, I am deeply passionate about the rapidly evolving world of Artificial Intelligence and Software Engineering.<br><br>
-                    
-                    My education has provided me with a solid foundation of Computer Science that equips me with the knowledge necessary to begin my journey to achieving this goal. My completed coursework includes: Data Structures and Algorithims, Object Oriented Design, Operating Systems, and Computer Networking. Additionally, I am currently taking Mobile Programming.<br><br>
-                    
-                    I aspire to break into the AI and Web Development sphere as a software engineer and use my skills to develop innovative solutions to real world problems. I am driven by learning and curiosity, and I possess a growth mindset that allows me to overcome obstacles. I am eager to join a company that will allow me to learn from experienced mentors and contribute to impactful projects and solutions.
-                </p>
-                <div class="tab-titles">
-                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
-                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
-                    <p class="tab-links" onclick="opentab('education')">Education</p>
-                </div>
-                <div class="tab-contents active-tab" id="skills">
-                    <ul>
-                        <li><span>Programming Languages</span><br>Python, C/C++, Java, Go, TypeScript, JavaScript, SQL</li>
-                        <li><span>ML and AI Systems</span><br>PyTorch, RAG, GraphRAG, Multithreading</li>
-                        <li><span>Backend and Database</span><br>Node.js, Flask, Django, REST APIs, Docker, AWS, MongoDB</li>
-                        <li><span>Frontend</span><br>React, React Native, Tailwind</li>
-                        <li><span>Developer Tools</span><br>Git, GitHub, GitLab</li>
-                    </ul>
-                </div>
-
-                <div class="tab-contents" id="experience">
-                    <ul>
-                        <li><span>Jan 2026 - Present</span><br>Machine Learning Research Intern at California State University, East Bay</li>
-                        <li><span>Sep 2025 - Present</span><br>Lead Program Mentor at MESA CSU East Bay</li>
-                        <li><span>Aug 2025 - Present</span><br>Teaching Assistant at California State University, East Bay</li>
-                        <li><span>Aug 2024 - Present</span><br>Freelance Software Engineer</li>
-                        
-                    </ul>
-                </div>
-                <div class="tab-contents" id="education">
-                    <ul>
-                        <li><span>December 2026</span><br>B.S. Computer Science - California State University, East Bay</li>
-                        <li><span>June 2024</span><br>A.S. Computer Science - Chabot College</li>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
-</div>
-
-<!----------------Contact Me Section------------------->
-<div id="contact">
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">Contact Information</h1>
-                <p><i class="fa-solid fa-paper-plane"></i>aladomateo@gmail.com</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/in/mateoalado/"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/matesuu"><i class="fa-brands fa-square-github"></i></a>
-                </div>
-
-            </div>
-            <div class="contact-right">
-                <form name="submit-to-email">
-                    <input type="text" name="Name" id="name" placeholder="Your Name" required>
-                    <input type="email" name="Email" id="email" placeholder="Your Email" required>
-                    <textarea name="Message" id="message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                    <a href="images/Mateo Alado - Resume.pdf" download class="btn btn2">Download Resume/CV</a>
-                </form>
-                <span id="msg"></span>
-             </div>
-        </div>
-    </div>
-    
-</div>
-
-<script>
-    var tablinks = document.getElementsByClassName('tab-links');
-    var tabcontents = document.getElementsByClassName('tab-contents');
-
-    function opentab(tabname){
-        for(tablink of tablinks){
-            tablink.classList.remove("active-link");
+        function sendEmail(e) {
+            e.preventDefault();
+            var msg = document.getElementById('form-msg');
+            msg.textContent = 'sending...';
+            emailjs.send('service_id','template_id',{
+                name: document.getElementById('c-name').value,
+                email: document.getElementById('c-email').value,
+                message: document.getElementById('c-message').value
+            }).then(function(){
+                msg.textContent = 'message sent!';
+                document.getElementById('contact-form').reset();
+            }, function(){
+                msg.textContent = 'something went wrong. try emailing directly.';
+            });
         }
-        for(tabcontent of tabcontents){
-            tabcontent.classList.remove("active-tab");
-        }
-        event.currentTarget.classList.add("active-link");
-        document.getElementById(tabname).classList.add("active-tab");
-    }
+    </script>
 
-    function openmenu(){
-        document.getElementById('sidemenu').style.right = '0';
-    }
-
-    function closemenu(){
-        document.getElementById('sidemenu').style.right = '-200px';
-    }
-</script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        window.addEventListener("scroll", function () {
-            var navbar = document.getElementById("navbar");
-            if (window.scrollY > 80) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+    <!-- Tab switching -->
+    <script>
+        document.querySelectorAll('.tab-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active-tab-btn'); });
+                document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active-panel'); });
+                btn.classList.add('active-tab-btn');
+                document.getElementById(btn.dataset.tab).classList.add('active-panel');
+            });
         });
-    });
+    </script>
 
-</script>
+    <!-- ASCII ORB (ported 1:1 from cue.sf.tools) -->
+    <script>
+    (function(){
+        var Fc = " .:-=+*#%@";
+        var Jc = " ";
+        var Ic = 28, Wc = 28;
+        var Q0 = 30;
+        var ep = 20;
+        var ar = 1, V0 = 20, tp = 1.6;
 
+        function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+        function frac(v){ return v - Math.floor(v); }
+        function lerp(a, b, t){ return a + (b - a) * t; }
+        function smoothstep(v){ return v * v * (3 - 2 * v); }
 
-<script type="text/javascript">
-    var headerBg = document.getElementById('header');
-    window.addEventListener('scroll', function(){
-        headerBg.style.top = -window.pageYOffset + 'px';
-        headerBg.style.backgroundPositionY = +window.pageYOffset/3 + 'px';
-    });
-</script>
+        function hash(x, y, z){
+            return frac(Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453123);
+        }
 
-<script type="text/javascript">
-    window.addEventListener('scroll', function(){
-        var header = document.querySelector('header');
-        header.classList.toggle('sticky', window.scrollY > 0);
-    });
-</script>
+        function noise2(x, y, z){
+            var rx = Math.floor(x), ry = Math.floor(y);
+            var gx = smoothstep(x - rx), gy = smoothstep(y - ry);
+            return lerp(
+                lerp(hash(rx, ry, z), hash(rx+1, ry, z), gx),
+                lerp(hash(rx, ry+1, z), hash(rx+1, ry+1, z), gx),
+                gy
+            );
+        }
+
+        function fbm(x, y, z, w){
+            var a = noise2(x / ep, y / ep + z, w);
+            var b = noise2(x / 11 + 17.1, y / 11 + z * 1.35 + 3.2, w + 11);
+            return clamp(a * 0.68 + b * 0.32, 0, 1);
+        }
+
+        function renderOrb(W, H, t, seed, ripples, aspect){
+            var cx = W / 2, cy = H / 2;
+            var vx = Math.max(1, W / 2 - 1);
+            var vy = Math.max(1, H / (2 * aspect) - 1);
+            var rv = Math.min(vx, vy);
+            var rv2 = rv * rv;
+            var invR = 1 / rv;
+            var invA = 1 / aspect;
+            var out = "";
+            for (var row = 0; row < H; row++){
+                var dy = (row - cy) * invA;
+                var dy2 = dy * dy;
+                for (var col = 0; col < W; col++){
+                    if (dy2 >= rv2){ out += Jc; continue; }
+                    var dx = col - cx;
+                    var dist = Math.sqrt(dx * dx + dy2) * invR;
+                    if (dist >= 1){ out += Jc; continue; }
+                    var falloff = 1 - dist * dist;
+                    var val = fbm(col, row, t, seed) * falloff;
+                    for (var ri = 0; ri < ripples.length; ri++){
+                        var rp = ripples[ri];
+                        var age = t - rp.startTime;
+                        if (age < 0 || age > ar) continue;
+                        var rdx = col - rp.x;
+                        var rdy = (row - rp.y) * invA;
+                        var rdist = Math.sqrt(rdx*rdx + rdy*rdy);
+                        var ring = age * V0;
+                        var diff = Math.abs(rdist - ring);
+                        if (diff >= tp || dist >= 0.95) continue;
+                        var ripFade = (1 - age / ar);
+                        var ripStrength = (1 - diff / tp) * ripFade;
+                        var ripCenter = 1 - Math.pow(dist, 3);
+                        val = Math.min(1, val + ripStrength * 0.8 * ripCenter);
+                    }
+                    var idx = Math.min(Fc.length - 1, Math.floor(val * Fc.length));
+                    out += Fc[idx] || Jc;
+                }
+                if (row < H - 1) out += "\n";
+            }
+            return out;
+        }
+
+        var wrap = document.querySelector('.ascii-orb-wrap');
+        var pre  = document.querySelector('.ascii-orb');
+        if (!wrap || !pre) return;
+
+        var seed = Math.random() * 1000;
+        var ripples = [];
+        var rafId = 0;
+        var lastFrame = -Infinity;
+        var frameInterval = 1000 / Q0;
+
+        // measure char aspect ratio
+        var probe = document.createElement('span');
+        probe.textContent = 'M';
+        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;';
+        document.body.appendChild(probe);
+        var r = probe.getBoundingClientRect();
+        var charW = r.width || 8, charH = r.height || 12;
+        var aspect = charW / charH;
+        document.body.removeChild(probe);
+
+        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function getTime(now){ return prefersReduced ? 3 : (now - startTime) / 1000; }
+        var startTime = performance.now();
+
+        function addRipple(col, row, now){
+            var t = getTime(now);
+            ripples = ripples.filter(function(rp){ return t - rp.startTime < ar; });
+            ripples.push({ x: col, y: row, startTime: t });
+        }
+
+        function draw(now){
+            if (now - lastFrame >= frameInterval){
+                lastFrame = now;
+                var t = getTime(now);
+                ripples = ripples.filter(function(rp){ return t - rp.startTime < ar; });
+                pre.textContent = renderOrb(Ic, Wc, t, seed, ripples, aspect);
+            }
+            if (!prefersReduced) rafId = requestAnimationFrame(draw);
+        }
+
+        pre.textContent = renderOrb(Ic, Wc, getTime(performance.now()), seed, [], aspect);
+        if (!prefersReduced) rafId = requestAnimationFrame(draw);
+
+        wrap.addEventListener('click', function(e){
+            var rect = wrap.getBoundingClientRect();
+            var col = (e.clientX - rect.left) / rect.width * (Ic - 1);
+            var row = (e.clientY - rect.top)  / rect.height * (Wc - 1);
+            addRipple(col, row, performance.now());
+            pre.textContent = renderOrb(Ic, Wc, getTime(performance.now()), seed, ripples, aspect);
+        });
+
+        wrap.addEventListener('keydown', function(e){
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            e.preventDefault();
+            addRipple(Ic / 2, Wc / 2, performance.now());
+        });
+    })();
+    </script>
 
 </body>
 </html>
