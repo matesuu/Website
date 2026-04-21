@@ -181,7 +181,7 @@ function Sidebar() {
 
         <div className="info-content">
           <h1 className="name">Mateo Alado</h1>
-          <p className="title">Machine Learning Engineer</p>
+          <p className="title">AI/ML Engineer</p>
         </div>
 
         <button className="info-more-btn" onClick={() => setExpanded(!expanded)}>

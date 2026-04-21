@@ -273,138 +273,145 @@
         });
     </script>
 
-    <!-- ASCII ORB (ported 1:1 from cue.sf.tools) -->
+    <!-- ASCII ORB (1:1 port of cue.sf.tools minified source) -->
     <script>
     (function(){
+        // --- constants (exact names/values from source) ---
         var Fc = " .:-=+*#%@";
         var Jc = " ";
-        var Ic = 28, Wc = 28;
-        var Q0 = 30;
-        var ep = 20;
-        var ar = 1, V0 = 20, tp = 1.6;
+        var Ic = 28, Wc = 28;   // cols, rows
+        var Q0 = 30;             // fps
+        var ep = 20;             // noise scale
+        var ar = 1;              // ripple lifetime (s)
+        var V0 = 20;             // ripple expand speed
+        var tp = 1.6;            // ripple thickness
 
-        function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
-        function frac(v){ return v - Math.floor(v); }
-        function lerp(a, b, t){ return a + (b - a) * t; }
-        function smoothstep(v){ return v * v * (3 - 2 * v); }
-
-        function hash(x, y, z){
-            return frac(Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453123);
+        // --- math helpers ($0, K0, Pc, lp, fi, ap, F0) ---
+        function $0(i, s, c) { return Math.max(s, Math.min(c, i)); }
+        function K0(i) { return i - Math.floor(i); }
+        function Pc(i, s, c) { return i + (s - i) * c; }
+        function lp(i) { return i * i * (3 - 2 * i); }
+        function fi(i, s, c) {
+            return K0(Math.sin(i * 127.1 + s * 311.7 + c * 74.7) * 43758.5453123);
+        }
+        function ap(i, s, c) {
+            var r = Math.floor(i), o = Math.floor(s);
+            var h = r + 1, m = o + 1;
+            var g = lp(i - r), v = lp(s - o);
+            var p = fi(r, o, c), T = fi(h, o, c);
+            var A = fi(r, m, c), L = fi(h, m, c);
+            return Pc(Pc(p, T, g), Pc(A, L, g), v);
+        }
+        function F0(i, s, c, r) {
+            var o = ap(i / ep, s / ep + c, r);
+            var h = ap(i / 11 + 17.1, s / 11 + c * 1.35 + 3.2, r + 11);
+            return $0(o * 0.68 + h * 0.32, 0, 1);
         }
 
-        function noise2(x, y, z){
-            var rx = Math.floor(x), ry = Math.floor(y);
-            var gx = smoothstep(x - rx), gy = smoothstep(y - ry);
-            return lerp(
-                lerp(hash(rx, ry, z), hash(rx+1, ry, z), gx),
-                lerp(hash(rx, ry+1, z), hash(rx+1, ry+1, z), gx),
-                gy
-            );
-        }
-
-        function fbm(x, y, z, w){
-            var a = noise2(x / ep, y / ep + z, w);
-            var b = noise2(x / 11 + 17.1, y / 11 + z * 1.35 + 3.2, w + 11);
-            return clamp(a * 0.68 + b * 0.32, 0, 1);
-        }
-
-        function renderOrb(W, H, t, seed, ripples, aspect){
-            var cx = W / 2, cy = H / 2;
-            var vx = Math.max(1, W / 2 - 1);
-            var vy = Math.max(1, H / (2 * aspect) - 1);
-            var rv = Math.min(vx, vy);
-            var rv2 = rv * rv;
-            var invR = 1 / rv;
-            var invA = 1 / aspect;
-            var out = "";
-            for (var row = 0; row < H; row++){
-                var dy = (row - cy) * invA;
-                var dy2 = dy * dy;
-                for (var col = 0; col < W; col++){
-                    if (dy2 >= rv2){ out += Jc; continue; }
-                    var dx = col - cx;
-                    var dist = Math.sqrt(dx * dx + dy2) * invR;
-                    if (dist >= 1){ out += Jc; continue; }
-                    var falloff = 1 - dist * dist;
-                    var val = fbm(col, row, t, seed) * falloff;
-                    for (var ri = 0; ri < ripples.length; ri++){
-                        var rp = ripples[ri];
-                        var age = t - rp.startTime;
-                        if (age < 0 || age > ar) continue;
-                        var rdx = col - rp.x;
-                        var rdy = (row - rp.y) * invA;
-                        var rdist = Math.sqrt(rdx*rdx + rdy*rdy);
-                        var ring = age * V0;
-                        var diff = Math.abs(rdist - ring);
-                        if (diff >= tp || dist >= 0.95) continue;
-                        var ripFade = (1 - age / ar);
-                        var ripStrength = (1 - diff / tp) * ripFade;
-                        var ripCenter = 1 - Math.pow(dist, 3);
-                        val = Math.min(1, val + ripStrength * 0.8 * ripCenter);
+        // --- render function (J0) - exact logic from source ---
+        function J0(i, s, c, r, o, h) {
+            var m = i / 2, g = s / 2;
+            var v = Math.max(1, i / 2 - 1);
+            var p = Math.max(1, s / (2 * h) - 1);
+            var T = Math.min(v, p);
+            var A = T * T, L = 1 / T, Z = 1 / h;
+            var K = "";
+            for (var G = 0; G < s; G++) {
+                var Y = (G - g) * Z, V = Y * Y;
+                for (var z = 0; z < i; z++) {
+                    if (V >= A) { K += Jc; continue; }
+                    var O = z - m;
+                    var q = Math.sqrt(O * O + V) * L;
+                    if (q >= 1) { K += Jc; continue; }
+                    var U = 1 - q * q;
+                    var H = F0(z, G, c, r) * U;
+                    for (var fi2 = 0; fi2 < o.length; fi2++) {
+                        var F = o[fi2];
+                        var ge = c - F.startTime;
+                        if (ge < 0 || ge > ar) continue;
+                        var Ee = z - F.x;
+                        var ze = (G - F.y) * Z;
+                        var bt = Math.sqrt(Ee * Ee + ze * ze);
+                        var tt = ge * V0;
+                        var Ie = Math.abs(bt - tt);
+                        if (Ie >= tp || q >= 0.95) continue;
+                        var D = 1 - ge / ar;
+                        var X = (1 - Ie / tp) * D;
+                        var J = 1 - Math.pow(q, 3);
+                        H = Math.min(1, H + X * 0.8 * J);
                     }
-                    var idx = Math.min(Fc.length - 1, Math.floor(val * Fc.length));
-                    out += Fc[idx] || Jc;
+                    var P = Math.min(Fc.length - 1, Math.floor(H * Fc.length));
+                    K += Fc[P] || Jc;
                 }
-                if (row < H - 1) out += "\n";
+                if (G < s - 1) K += "\n";
             }
-            return out;
+            return K;
         }
 
-        var wrap = document.querySelector('.ascii-orb-wrap');
-        var pre  = document.querySelector('.ascii-orb');
-        if (!wrap || !pre) return;
+        // --- setup (mirrors I0 useEffect) ---
+        var orbPre  = document.querySelector('.ascii-orb');      // i / o
+        var orbWrap = document.querySelector('.ascii-orb-wrap'); // s / h
+        if (!orbPre || !orbWrap) return;
 
-        var seed = Math.random() * 1000;
-        var ripples = [];
-        var rafId = 0;
-        var lastFrame = -Infinity;
-        var frameInterval = 1000 / Q0;
+        // measure char aspect ratio from inside the <pre> (matches source: o.appendChild(m))
+        var probe = document.createElement("span");
+        probe.textContent = "M";
+        probe.style.position = "absolute";
+        probe.style.visibility = "hidden";
+        probe.style.whiteSpace = "pre";
+        orbPre.appendChild(probe);
+        var gr = probe.getBoundingClientRect();
+        var charW = gr.width || 8, charH = gr.height || 12;
+        var T = charW / charH;   // aspect ratio (named T in source)
+        orbPre.removeChild(probe);
 
-        // measure char aspect ratio
-        var probe = document.createElement('span');
-        probe.textContent = 'M';
-        probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;';
-        document.body.appendChild(probe);
-        var r = probe.getBoundingClientRect();
-        var charW = r.width || 8, charH = r.height || 12;
-        var aspect = charW / charH;
-        document.body.removeChild(probe);
+        var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var L = performance.now();  // startTime
+        var ripples = [];           // r.current
+        var seed = Math.random() * 1000; // c.current
+        var rafId = 0;              // Z
+        var lastFrame = -Infinity;  // K
+        var G = 1000 / Q0;          // frame interval
 
-        var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        // getTime (Y in source)
+        function Y(U) { return reducedMotion ? 3 : (U - L) / 1000; }
 
-        function getTime(now){ return prefersReduced ? 3 : (now - startTime) / 1000; }
-        var startTime = performance.now();
-
-        function addRipple(col, row, now){
-            var t = getTime(now);
-            ripples = ripples.filter(function(rp){ return t - rp.startTime < ar; });
-            ripples.push({ x: col, y: row, startTime: t });
+        // render (V in source)
+        function V(U) {
+            var H = Y(U);
+            ripples = ripples.filter(function(P) { return H - P.startTime < ar; });
+            orbPre.textContent = J0(Ic, Wc, H, seed, ripples, T);
         }
 
-        function draw(now){
-            if (now - lastFrame >= frameInterval){
-                lastFrame = now;
-                var t = getTime(now);
-                ripples = ripples.filter(function(rp){ return t - rp.startTime < ar; });
-                pre.textContent = renderOrb(Ic, Wc, t, seed, ripples, aspect);
-            }
-            if (!prefersReduced) rafId = requestAnimationFrame(draw);
+        // addRipple (z in source) — renders immediately after push
+        function addRipple(U, H, P) {
+            ripples = ripples.concat([{ x: U, y: H, startTime: Y(P) }]);
+            V(P);
         }
 
-        pre.textContent = renderOrb(Ic, Wc, getTime(performance.now()), seed, [], aspect);
-        if (!prefersReduced) rafId = requestAnimationFrame(draw);
+        // RAF loop (O in source)
+        function O(U) {
+            if (U - lastFrame >= G) { lastFrame = U; V(U); }
+            rafId = requestAnimationFrame(O);
+        }
 
-        wrap.addEventListener('click', function(e){
-            var rect = wrap.getBoundingClientRect();
-            var col = (e.clientX - rect.left) / rect.width * (Ic - 1);
-            var row = (e.clientY - rect.top)  / rect.height * (Wc - 1);
-            addRipple(col, row, performance.now());
-            pre.textContent = renderOrb(Ic, Wc, getTime(performance.now()), seed, ripples, aspect);
+        // initial render
+        V(L);
+        if (!reducedMotion) rafId = requestAnimationFrame(O);
+
+        // click handler (B in source) — reads bbox from <pre> (o), not wrapper
+        orbWrap.addEventListener("click", function(U) {
+            var H = orbPre.getBoundingClientRect();
+            if (!H.width || !H.height) return;
+            var P = (U.clientX - H.left) / H.width * (Ic - 1);
+            var F = (U.clientY - H.top)  / H.height * (Wc - 1);
+            addRipple(P, F, performance.now());
         });
 
-        wrap.addEventListener('keydown', function(e){
-            if (e.key !== 'Enter' && e.key !== ' ') return;
-            e.preventDefault();
+        // keydown handler (q in source)
+        orbWrap.addEventListener("keydown", function(U) {
+            if (U.key !== "Enter" && U.key !== " ") return;
+            U.preventDefault();
             addRipple(Ic / 2, Wc / 2, performance.now());
         });
     })();
