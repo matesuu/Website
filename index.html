@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="images/bluem.png" type="image/png" />
+
     <title>Mateo Alado</title>
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -46,8 +46,7 @@
                         <div class="muted">I study Computer Science at California State University, East Bay. I build systems tools, ML utilities, and open source software.</div>
                         <div class="row gap-sm wrap">
                             <a href="#projects" class="button button-primary">view projects</a>
-                            <a href="#contact" class="button">contact me</a>
-                            <a href="images/Mateo Alado - Resume.pdf" download class="button">resume ↓</a>
+                            <a href="images/Mateo Alado - Resume.pdf" target="_blank" class="button">resume ↗</a>
                         </div>
                     </div>
                 </div>
@@ -236,30 +235,18 @@
             <section class="panel stack-sm" id="contact">
                 <div class="label">contact</div>
                 <hr class="separator" />
-                <div class="grid two-up align-start">
-                    <div class="stack-sm">
-                        <div class="stat-box stack-sm">
-                            <div class="label">email</div>
-                            <div class="title">aladomateo@gmail.com</div>
-                        </div>
-                        <div class="stat-box stack-sm">
-                            <div class="label">links</div>
-                            <div class="row gap-sm wrap">
-                                <a href="https://www.linkedin.com/in/mateoalado/" target="_blank" class="button">linkedin ↗</a>
-                                <a href="https://github.com/matesuu" target="_blank" class="button">github ↗</a>
-                                <a href="images/Mateo Alado - Resume.pdf" download class="button">resume ↓</a>
-                            </div>
-                        </div>
+                <div class="stack-sm">
+                    <div class="stat-box stack-sm">
+                        <div class="label">email</div>
+                        <div class="title">aladomateo@gmail.com</div>
                     </div>
                     <div class="stat-box stack-sm">
-                        <div class="label">send a message</div>
-                        <form id="contact-form" class="stack-sm" onsubmit="sendEmail(event)">
-                            <input type="text" id="c-name" placeholder="your name" required />
-                            <input type="email" id="c-email" placeholder="your email" required />
-                            <textarea id="c-message" rows="5" placeholder="your message"></textarea>
-                            <button type="submit" class="button button-primary">send message</button>
-                            <span id="form-msg" class="muted"></span>
-                        </form>
+                        <div class="label">links</div>
+                        <div class="row gap-sm wrap">
+                            <a href="https://www.linkedin.com/in/mateoalado/" target="_blank" class="button">linkedin ↗</a>
+                            <a href="https://github.com/matesuu" target="_blank" class="button">github ↗</a>
+                            <a href="images/Mateo Alado - Resume.pdf" target="_blank" class="button">resume ↗</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -273,30 +260,6 @@
         </footer>
 
     </div>
-
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init({ publicKey: "8X41q2CI0nfqJCVCk" });
-        })();
-
-        function sendEmail(e) {
-            e.preventDefault();
-            var msg = document.getElementById('form-msg');
-            msg.textContent = 'sending...';
-            emailjs.send('service_id','template_id',{
-                name: document.getElementById('c-name').value,
-                email: document.getElementById('c-email').value,
-                message: document.getElementById('c-message').value
-            }).then(function(){
-                msg.textContent = 'message sent!';
-                document.getElementById('contact-form').reset();
-            }, function(){
-                msg.textContent = 'something went wrong. try emailing directly.';
-            });
-        }
-    </script>
 
     <!-- Tab switching -->
     <script>
