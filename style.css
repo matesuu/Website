@@ -290,11 +290,7 @@ strong { font-weight: 600; }
 .tab-panel          { display: none; }
 .tab-panel.active-panel { display: block; }
 
-#about {
-    min-height: 260px;
-}
 .about-social {
-    margin-top: auto;
     justify-content: center;
     width: 100%;
     padding-top: 10px;
