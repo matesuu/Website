@@ -3,22 +3,22 @@
 
 /* ─── Variables ─────────────────────────────────────────── */
 :root {
-    --color-bg:             #131316;
-    --color-bg0:            #18181b;
-    --color-bg1:            #1e1e22;
-    --color-bg2:            #27272a;
-    --color-bg3:            #303034;
-    --color-fg:             #e8e8ea;
-    --color-fg1:            #c5c5c8;
-    --color-fg2:            #a1a1a6;
+    --color-bg:             #ffffff;
+    --color-bg0:            #f4f4f5;
+    --color-bg1:            #e4e4e7;
+    --color-bg2:            #d4d4d8;
+    --color-bg3:            #a1a1a6;
+    --color-fg:             #18181b;
+    --color-fg1:            #27272a;
+    --color-fg2:            #52525b;
     --color-fg3:            #71717a;
-    --color-fg4:            #52525b;
-    --color-border:         #27272a;
-    --color-border-subtle:  #1e1e22;
+    --color-fg4:            #a1a1a6;
+    --color-border:         #e4e4e7;
+    --color-border-subtle:  #f4f4f5;
     --color-yellow:         #feca00;
     --color-blue:           #008df4;
     --radius-2:             2px;
-    color-scheme: dark;
+    color-scheme: light;
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
                  Consolas, 'Liberation Mono', monospace;
     font-size: 12px;
