@@ -67,7 +67,18 @@ strong { font-weight: 600; }
     padding: 10px 16px;
     border-bottom: 1px dashed var(--color-border);
 }
-.header-brand { display: flex; flex-direction: column; gap: 2px; }
+.header-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+.header-brand-mona {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
 .header-brand-name {
     font-size: 12px;
     letter-spacing: .08em;
