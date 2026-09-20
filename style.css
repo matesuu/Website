@@ -64,8 +64,12 @@ strong { font-weight: 600; }
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    padding: 10px 16px;
+    padding: 10px 0;
     border-bottom: 1px dashed var(--color-border);
+}
+.header-inner {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 .header-brand {
     display: flex;
@@ -127,6 +131,21 @@ strong { font-weight: 600; }
     letter-spacing: .1em;
     font-size: 11px;
     color: var(--color-fg3);
+}
+.meta-label-lowercase {
+    text-transform: none;
+    letter-spacing: normal;
+}
+.hero-typing {
+    min-width: 11em;
+    text-align: right;
+}
+.hero-typing-cursor {
+    margin-left: 1px;
+    animation: hero-typing-blink 1s step-end infinite;
+}
+@keyframes hero-typing-blink {
+    50% { opacity: 0; }
 }
 .muted  { color: var(--color-fg3); }
 .title  {
@@ -220,9 +239,20 @@ strong { font-weight: 600; }
 }
 
 /* ─── ASCII Orb ──────────────────────────────────────────── */
-.auth-hero      { align-items: center; }
-.auth-copy,
-.auth-orb-panel { min-width: 0; }
+.auth-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 22px;
+}
+.auth-copy {
+    align-items: center;
+    max-width: 36rem;
+}
+.auth-copy .row {
+    justify-content: center;
+}
 .auth-orb-panel {
     display: flex;
     flex-direction: column;
@@ -343,9 +373,9 @@ strong { font-weight: 600; }
     .span-two { grid-column: span 1; }
     .header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
         gap: 6px;
-        padding: 8px 12px;
+        padding: 8px 0;
     }
     .header-nav { flex-wrap: wrap; }
     .shell {
