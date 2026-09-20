@@ -191,6 +191,15 @@ strong { font-weight: 600; }
 }
 .button-primary:hover { border-color: var(--color-fg2); }
 .button-small { min-height: 22px; padding: 0 8px; font-size: 10px; }
+.button-icon {
+    min-width: 26px;
+    padding: 0 8px;
+}
+.button-icon svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
 
 /* active tab button state */
 .active-tab-btn {
@@ -299,6 +308,17 @@ strong { font-weight: 600; }
 }
 .footer a { color: var(--color-fg3); }
 .footer a:hover { color: var(--color-fg); }
+.footer-icon-link {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+    text-decoration: none;
+}
+.footer-icon-link svg {
+    display: block;
+    width: 14px;
+    height: 14px;
+}
 
 /* ─── Responsive ─────────────────────────────────────────── */
 @media (max-width: 760px) {
