@@ -316,7 +316,8 @@ strong { font-weight: 600; }
     flex-direction: column;
     gap: 2px;
 }
-.thread-card { align-items: stretch; flex-direction: column; }
+.thread-card { align-items: stretch; flex-direction: column; gap: 4px; }
+.thread-card .workspace-main { align-items: flex-start; }
 .thread-row-header {
     width: 100%;
     display: flex;
@@ -332,6 +333,10 @@ strong { font-weight: 600; }
 .tab-panel          { display: none; }
 .tab-panel.active-panel { display: block; }
 
+.about-tabs {
+    justify-content: flex-end;
+    flex: 1 1 auto;
+}
 .about-social {
     justify-content: center;
     width: 100%;
