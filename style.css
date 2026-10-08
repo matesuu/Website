@@ -176,6 +176,9 @@ strong { font-weight: 600; }
     gap: 8px;
     flex-wrap: wrap;
 }
+.section-header-centered {
+    justify-content: center;
+}
 
 /* ─── Panel ──────────────────────────────────────────────── */
 .panel {
@@ -339,8 +342,7 @@ strong { font-weight: 600; }
 .tab-panel.active-panel { display: block; }
 
 .about-tabs {
-    justify-content: flex-end;
-    flex: 1 1 auto;
+    justify-content: center;
 }
 .about-social {
     justify-content: center;
