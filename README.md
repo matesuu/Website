@@ -1,8 +1,8 @@
 # Website Link
 #
-# http://matesuu.github.io/Website/
+# https://mateoalado.com/
 #
 #
-# Mateo Alado's Professional Website and Portfolio
+# Mateo Alado's Website
 
-This repository houses the code for my personal website that showcases my work experience, educational information, and relevant projects. The website uses HTML, CSS, JS/DOM, as well as the EmailJS API to automate email responses.
+This repository houses the code for my personal website that showcases my work experience, educational information, publications, and relevant projects.
