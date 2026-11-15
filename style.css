@@ -62,14 +62,14 @@ strong { font-weight: 600; }
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 8px;
     padding: 10px 0;
     border-bottom: 1px dashed var(--color-border);
 }
 .header > .shell.header-inner {
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 0;
     padding-top: 0;
@@ -347,7 +347,10 @@ strong { font-weight: 600; }
 .about-social {
     justify-content: center;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 4px;
+}
+.auth-copy .about-social {
+    justify-content: center;
 }
 
 /* ─── Forms ──────────────────────────────────────────────── */
