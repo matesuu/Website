@@ -5,8 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Mateo Alado</title>
-    <link rel="icon" href="images/mona-favicon.gif" type="image/gif" />
+    <link rel="icon" href="/images/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/images/favicon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" sizes="180x180" />
+    <link rel="shortcut icon" href="/images/favicon-48.png" type="image/png" />
+    <link rel="icon" href="/images/mona-favicon.gif" type="image/gif" />
+    <meta property="og:image" content="https://mateoalado.com/images/mona-favicon.png" />
     <link rel="stylesheet" href="style.css" />
+    <script>
+        (function () {
+            try {
+                var stored = localStorage.getItem('theme');
+                var theme = stored === 'dark' || stored === 'light'
+                    ? stored
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 </head>
 <body>
     <div class="app-shell">
@@ -16,8 +35,12 @@
             <div class="shell header-inner">
                 <div class="header-brand">
                     <img class="header-brand-mona" src="images/mona-favicon.gif" width="40" height="40" alt="" />
-                    <a class="header-brand-name"></a>
+                    <a class="header-brand-name">mateo alado</a>
                 </div>
+                <button type="button" class="button button-icon theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <svg class="theme-icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-16a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 18a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1zM4.22 4.22a1 1 0 0 1 1.42 0l.7.7a1 1 0 0 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42zm14.14 14.14a1 1 0 0 1 1.42 0l.7.7a1 1 0 1 1-1.42 1.42l-.7-.7a1 1 0 0 1 0-1.42zM1 12a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2H2a1 1 0 0 1-1-1zm18 0a1 1 0 0 1 1-1h1a1 1 0 1 1 0 2h-1a1 1 0 0 1-1-1zM4.22 19.78a1 1 0 0 1 0-1.42l.7-.7a1 1 0 1 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0zm14.14-14.14a1 1 0 0 1 0-1.42l.7-.7a1 1 0 1 1 1.42 1.42l-.7.7a1 1 0 0 1-1.42 0z"/></svg>
+                    <svg class="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+                </button>
             </div>
         </header>
 
@@ -229,9 +252,24 @@
 
     </div>
 
-    <!-- Tab switching -->
+    <!-- Tab switching + theme toggle -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                function syncThemeLabel() {
+                    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+                    themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+                }
+                syncThemeLabel();
+                themeToggle.addEventListener('click', function() {
+                    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', next);
+                    try { localStorage.setItem('theme', next); } catch (e) {}
+                    syncThemeLabel();
+                });
+            }
+
             document.querySelectorAll('.tab-btn').forEach(function(btn) {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active-tab-btn'); });
